@@ -1,0 +1,132 @@
+.ContactsView{
+  position:relative;
+  float:right;
+  background:url(../../images/bg.png) no-repeat center top;
+  .infoDetail{
+    width:424px;
+    height:500px;
+    margin:0 auto;
+    padding-top:30px;
+    .userImg{
+      width:80px;
+      height:80px;
+      border-radius:50%;
+      overflow:hidden;
+      margin:0 auto;
+      img{
+        width:100%;
+        height:100%;
+      }
+    }
+    .userName{
+      font-size: 16px;
+      font-family: "Microsoft YaHei";
+      color: rgb(64, 64, 64);
+      text-align:center;
+      margin-top:15px;
+    }
+    .userAbout{
+      font-size: 14px;
+      font-family: "Microsoft YaHei";
+      color: rgb(128, 128, 128);
+      text-align:center;
+      margin-top:15px;
+      margin-bottom:40px;
+    }
+    .inGame{
+      width:100%;
+      height:auto;
+      margin:0 auto;
+      padding-top:20px;
+      margin-bottom:110px;
+      border-top:1px solid #e1e2e6;
+      h3{
+        font-weight:normal;
+        font-style:normal;
+        font-size: 14px;
+        font-family: "Microsoft YaHei";
+        color: rgb(64, 64, 64);
+        margin-bottom:20px;
+      }
+      ul{
+        width:100%;
+        height:75px;
+        li{
+          float:left;
+          width:54px;
+          height:75px;
+          margin-right:20px;
+          &:last-child{
+            margin-right:0;
+          }
+          img{
+            width:54px;
+            height:54px;
+          }
+          p{
+            width:54px;
+            height:21px;
+            font-size: 12px;
+            font-family: "Microsoft YaHei";
+            color: rgb(64, 64, 64);
+            text-align:center;
+            overflow:hidden;
+            text-overflow:ellipsis;
+            white-space:nowrap;
+          }
+        }
+      }
+    }
+    .box{
+      width:100%;
+      height:42px;
+      text-align:center;
+      a{
+        display:inline-block;
+        width:126px;
+        height:42px;
+        text-align:center;
+        line-height:42px;
+        font-size: 14px;
+        font-family: "Microsoft YaHei";
+        text-decoration: none;
+      }
+      .default{
+        color: rgb(89, 89, 89);
+        background-color: rgba(245, 246, 247, 0);
+        border:1px solid rgb(220, 220, 220);
+        margin-left:10px;
+        &:hover{
+          border-color: rgb(220, 220, 220);
+          background-color: rgb(245, 246, 247);
+        }
+        &:active{
+          border-color: rgb(220, 220, 220);
+          background-color: rgb(237, 239, 240);
+        }
+      }
+      .isCurrent{
+        color:#fff;
+        background-image: -moz-linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
+        background-image: -webkit-linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
+        background-image: linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
+        background-image: -ms-linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
+        &:hover{
+          background-image: -moz-linear-gradient( 0deg, rgb(3,139,254) 1%, rgb(8,221,229) 100%);
+          background-image: -webkit-linear-gradient( 0deg, rgb(3,139,254) 1%, rgb(8,221,229) 100%);
+          background-image: linear-gradient( 0deg, rgb(3,139,254) 1%, rgb(8,221,229) 100%);
+          background-image: -ms-linear-gradient( 0deg, rgb(3,139,254) 1%, rgb(8,221,229) 100%);
+        }
+        &:active{
+          background-image: -moz-linear-gradient( 0deg, rgb(6,119,235) 1%, rgb(1,217,231) 100%);
+          background-image: -webkit-linear-gradient( 0deg, rgb(6,119,235) 1%, rgb(1,217,231) 100%);
+          background-image: linear-gradient( 0deg, rgb(6,119,235) 1%, rgb(1,217,231) 100%);
+          background-image: -ms-linear-gradient( 0deg, rgb(6,119,235) 1%, rgb(1,217,231) 100%);
+        }
+      }
+    }
+  }
+}
+.defaultState{
+  background:url(../../images/defaultState.png) no-repeat center;
+}

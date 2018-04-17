@@ -1,0 +1,214 @@
+/* line 1, ../sass/Contacts.scss */
+.Contacts {
+  width: 100%;
+  height: 100%;
+}
+/* line 4, ../sass/Contacts.scss */
+.Contacts .ContactsBox {
+  float: left;
+  width: 260px;
+  height: 100%;
+  min-height: 638px;
+  border-right: 1px solid #e1e2e6;
+  background: #f0f2f5;
+}
+/* line 11, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatSerch {
+  padding: 19px 11px 11px 12px;
+}
+/* line 13, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatSerch input {
+  width: 197px;
+  height: 40px;
+  padding: 0 10px 0 30px;
+  font-size: 12px;
+  font-family: "Microsoft YaHei";
+  color: #666;
+  border: 0;
+  outline: none;
+  background: #e5e7e9 url(../../images/icon.png) no-repeat 10px center;
+}
+/* line 26, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList {
+  width: 100%;
+  height: auto;
+}
+/* line 29, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .title {
+  position: relative;
+  height: 21px;
+  padding-left: 35px;
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+  color: #404040;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+/* line 39, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .title::before {
+  position: absolute;
+  content: '';
+  left: 13px;
+  top: 6px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 7px solid #909090;
+}
+/* line 52, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .titleB::before {
+  top: 6px;
+  border-top: 7px solid #909090;
+  border-bottom: none;
+}
+/* line 58, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList ul {
+  width: 100%;
+  height: auto;
+}
+/* line 63, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li {
+  height: 42px;
+  padding: 11px 12px;
+  cursor: pointer;
+}
+/* line 67, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li:hover, .Contacts .ContactsBox .ChatList li.current {
+  background: #dee2e7;
+}
+/* line 70, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li:active {
+  background: #d0d5d8;
+}
+/* line 73, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userHd {
+  position: relative;
+  float: left;
+  width: 42px;
+  height: 42px;
+  margin-right: 10px;
+}
+/* line 79, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userHd .userHdImg {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #999;
+}
+/* line 85, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userHd .userHdImg img {
+  width: 100%;
+  height: 100%;
+}
+/* line 90, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userHd .onlineState {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 12px;
+  height: 9px;
+}
+/* line 97, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userHd .online_game {
+  background: url(../../images/icon_game.png) no-repeat center;
+}
+/* line 101, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userInfo {
+  float: left;
+  width: 179px;
+  height: 100%;
+}
+/* line 105, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userInfo div {
+  width: 100%;
+  height: 21px;
+  line-height: 21px;
+}
+/* line 110, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userInfo .name {
+  width: 140px;
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+  color: #404040;
+}
+/* line 116, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userInfo .userMessageNum {
+  float: right;
+  display: inline-block;
+  font-size: 11px;
+  min-width: 10px;
+  height: 20px;
+  padding: 0 5px;
+  text-align: center;
+  font-family: "Arial";
+  color: white !important;
+  border-radius: 20px;
+  background-color: #f74c31;
+}
+/* line 129, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userInfo .oneMessage {
+  width: 144px;
+  font-size: 12px;
+  font-family: "Microsoft YaHei";
+  color: gray;
+}
+/* line 135, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userInfo .userInfoTime {
+  font-size: 12px;
+  font-family: "Arial";
+  color: #b3b3b3;
+}
+/* line 140, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList li .userInfo .textHidden {
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* line 149, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .offline img {
+  -webkit-filter: grayscale(95%);
+}
+/* line 152, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .offline div, .Contacts .ContactsBox .ChatList .offline span {
+  color: #b3b3b3 !important;
+}
+/* line 156, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .overflow {
+  overflow: hidden;
+  overflow-y: auto;
+}
+/* line 159, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .overflow::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+/* line 163, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .overflow::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+}
+/* line 169, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .overflow:hover::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+/* line 176, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .addContactsList {
+  max-height: 128px;
+}
+/* line 179, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .myFriendsList {
+  min-height: 388px;
+  padding: 5px 0;
+}
+/* line 183, ../sass/Contacts.scss */
+.Contacts .ContactsBox .ChatList .myFriendsList .userInfo .userInfoA {
+  height: 100%;
+  line-height: 42px;
+}

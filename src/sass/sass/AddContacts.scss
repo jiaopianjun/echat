@@ -1,0 +1,160 @@
+.AddContacts {
+  width:100%;
+  height: 100%;
+  background:#f5f6f7;
+  position:relative;
+  .AddContactsBox{
+  	h3{
+  		height:34px;
+		font-size: 16px;
+		font-family: "Microsoft YaHei";
+		color: rgb(51, 51, 51);
+		font-weight:normal;
+		padding-left:30px;
+		margin-top:5px;
+		border-bottom:1px solid #e1e2e6;
+  	}
+  	.AddContactsSerchBox{
+  		margin:52px auto 60px;
+  		width:418px;
+  		height:38px;
+  		border:1px solid #00aaff;
+  		input{
+  			width:299px;
+  			height:38px;
+  			border:none;
+  			outline:none;
+  			padding:0;
+  			padding-left:40px;
+  			background:url(../../images/icon.png) no-repeat 15px center;
+  			font-size:14px;
+  		}
+  		span{
+  			float:right;
+  			display:inline-block;
+  			width:79px;
+  			height:38px;
+  			text-align:center;
+  			line-height:38px;
+  			color:#fff;
+  			font-size: 16px;
+            font-family: "Microsoft YaHei";
+            background:#00aaff;
+            &:hover{
+				background:#009bf5;
+				cursor:pointer;
+            }
+  		}
+  	}
+  	.AddContactsSerchListBox{
+  		padding:0 20px;
+  		h4{
+			height:32px;
+			font-size: 14px;
+			font-family: "Microsoft YaHei";
+			color: rgb(64, 64, 64);
+			font-weight:normal;
+			a{
+				font-size: 14px;
+				font-family: "Microsoft YaHei";
+				color: rgb(0, 153, 229);
+				text-decoration:none;
+				margin-left:30px;
+			}
+  		}
+  		ul{
+  			width:100%;
+  			height:365px;
+	  		overflow:hidden;
+	  		overflow-y:auto;
+	  		&::-webkit-scrollbar{
+	           width: 5px;     
+	           height: 4px;
+		    }
+	        &::-webkit-scrollbar-thumb {
+	          border-radius: 5px;
+	          -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	          background: rgba(0,0,0,0.2);
+	        }
+  			li{ 
+  				float:left;
+  				width:206px;
+  				height:52px;
+  				background:#fff;
+  				border:1px solid #eaeced;
+  				padding:23px 24px;
+  				margin:0 8px 16px 8px;
+  				overflow:hidden;
+  				transition:all .3s linear .1s;
+  				&:nth-child(3n){
+  					// margin-right:0;
+  				}
+  				&:hover{
+  					box-shadow: 0px 5px 5px 0px rgba(4, 0, 0, 0.06);
+  				}
+  				.imgHd{
+  					float:left;
+  					width:60px;
+  					height:60px;
+  					border-radius:50%;
+  					overflow:hidden;
+  					margin-right:16px;
+  					img{
+  						width:100%;
+  						height:100%;
+  					}
+  				}
+  				.userInfo{
+  					float:left;
+  					width:130px;
+            p{
+            	position:relative;
+  						font-size: 14px;
+  						font-family: "Microsoft YaHei";
+  						color: rgb(51, 51, 51);
+  						height:20px;
+  						width:100px;
+  						padding-right:30px;
+              i{
+                display:inline-block;
+                width:11px;
+                height:11px;
+              }
+              .w{
+                background:url(../../images/w.png) no-repeat center;
+              }
+              .m{
+                background:url(../../images/m.png) no-repeat center;
+              }
+            }
+            span{
+            	display:inline-block;
+            	width:58px;
+            	height:22px;
+            	line-height:22px;
+            	border:1px solid #dcdcdc;
+  						font-size: 12px;
+  						font-family: "Microsoft YaHei";
+  						text-align:center;
+  						margin-top:17px;
+  						img{
+  							margin-right:3px;
+  						}
+            }
+            .addProving{
+            	color: rgb(179, 179, 179);
+            	background-color: rgb(247, 249, 250);
+                cursor:default;
+                user-select:none;
+            }
+            .addFriends{
+            	color: rgb(128, 128, 128);
+            	background-color: rgba(0, 170, 255, 0);
+            	cursor:pointer;
+            }
+  				}
+  			}
+  		}
+  	}
+  }
+}

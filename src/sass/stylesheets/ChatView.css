@@ -1,0 +1,257 @@
+/* line 1, ../sass/ChatView.scss */
+.ChatView {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-left: 261px;
+  min-width: 608px;
+  min-height: 638px;
+}
+/* line 8, ../sass/ChatView.scss */
+.ChatView .ChatViewContMenu {
+  width: 100%;
+  height: 29px;
+  line-height: 20px;
+}
+/* line 12, ../sass/ChatView.scss */
+.ChatView .ChatViewContMenu span {
+  font-size: 16px;
+  font-family: "Microsoft YaHei";
+  color: #404040;
+  margin: 0 18px 0 15px;
+}
+/* line 18, ../sass/ChatView.scss */
+.ChatView .ChatViewContMenu em {
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+  color: #b3b3b3;
+}
+/* line 22, ../sass/ChatView.scss */
+.ChatView .ChatViewContMenu em:hover {
+  color: #00aaff;
+  cursor: pointer;
+}
+/* line 28, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp {
+  width: 100%;
+  min-height: 403px;
+  height: 100%;
+  padding: 15px 0;
+  background: #f7f9fa;
+}
+/* line 34, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .v_a {
+  padding: 0 15px;
+  min-height: 403px;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+}
+/* line 40, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .v_a::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+/* line 46, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .v_a:hover::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+/* line 51, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .v_a:hover::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+}
+/* line 58, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b {
+  width: 100%;
+  height: 100%;
+}
+/* line 61, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b li {
+  margin-bottom: 20px;
+}
+/* line 64, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .chatTime {
+  text-align: center;
+  font-size: 12px;
+  font-family: "Microsoft YaHei";
+  color: #999999;
+  margin-bottom: 20px;
+}
+/* line 71, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .chatStrip {
+  position: relative;
+  min-height: 45px;
+}
+/* line 74, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .chatStrip .chatUserImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+/* line 79, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .chatStrip .chatUserImg img {
+  height: 100%;
+  height: 100%;
+}
+/* line 84, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .chatStrip .chatText {
+  position: relative;
+  display: inline-block;
+  min-height: 15px;
+  max-width: 78%;
+  padding: 12px 10px;
+  text-align: left;
+  font-family: "Microsoft YaHei";
+}
+/* line 92, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .chatStrip .chatText .img, .ChatView .ChatViewContWarp .a_b .chatStrip .chatText > .img img {
+  position: relative;
+  display: inline-block;
+  width: 180px;
+  max-height: 300px;
+  margin: 0 auto;
+}
+/* line 104, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .isSelf .chatUserImg, .ChatView .ChatViewContWarp .a_b .isSelf .chatText {
+  float: right;
+}
+/* line 107, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .isSelf .chatText {
+  background: #00aaff;
+  color: #fff;
+  margin-right: 10px;
+  margin-top: 8px;
+}
+/* line 112, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .isSelf .chatText::before {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  right: -5px;
+  top: 0;
+  border-top: 10px solid #00aaff;
+  border-right: 10px solid transparent;
+}
+/* line 125, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .isOther .chatUserImg, .ChatView .ChatViewContWarp .a_b .isOther .chatText {
+  float: left;
+}
+/* line 128, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .isOther .chatText {
+  background-color: #f0f2f5;
+  color: #404040;
+  margin-left: 10px;
+  margin-top: 8px;
+}
+/* line 133, ../sass/ChatView.scss */
+.ChatView .ChatViewContWarp .a_b .isOther .chatText::before {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  left: -5px;
+  top: 0;
+  border-top: 10px solid #f0f2f5;
+  border-left: 10px solid transparent;
+}
+/* line 147, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer {
+  height: 146px;
+  background: #fff;
+}
+/* line 150, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edMenu {
+  width: 100%;
+  height: 18px;
+  padding-top: 22px;
+}
+/* line 154, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edMenu .edMenuIcon {
+  position: relative;
+  float: left;
+  display: inline-block;
+  width: 20px;
+  height: 17px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+/* line 163, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edMenu .face {
+  height: 18px;
+  background: url(../../images/face.png) no-repeat center top;
+}
+/* line 166, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edMenu .face:hover {
+  background-position: 0 -19px;
+}
+/* line 170, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edMenu .image {
+  background: url(../../images/img.png) no-repeat center top;
+}
+/* line 172, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edMenu .image:hover {
+  background-position: 0 -18px;
+}
+/* line 175, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edMenu .image input {
+  position: relative;
+  top: -5px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+/* line 185, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edCont {
+  position: relative;
+  padding: 0 15px;
+  height: 85px;
+  margin: 10px 0;
+  overflow: hidden;
+  overflow-y: auto;
+}
+/* line 192, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edCont::-webkit-scrollbar {
+  width: 5px;
+  height: 4px;
+}
+/* line 196, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edCont::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+}
+/* line 201, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edCont .edContWarp {
+  width: 100%;
+  height: 100%;
+  min-height: 85px;
+  font-size: 13px;
+  color: #666;
+}
+/* line 207, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edCont .edContWarp .img {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+/* line 213, ../sass/ChatView.scss */
+.ChatView .ChatViewContEditer .edCont span {
+  position: absolute;
+  top: 5px;
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+  color: #b3b3b3;
+  -web-user-select: none;
+}
+
+/* line 224, ../sass/ChatView.scss */
+.defaultState {
+  background: #F7F9FA url(../../images/defaultState.png) no-repeat center right;
+}

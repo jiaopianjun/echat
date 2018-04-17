@@ -1,0 +1,28 @@
+/* line 1, ../sass/navBar.scss */
+.navBar {
+  position: relative;
+  width: 100%;
+  padding-top: 19px;
+  height: 11px;
+}
+/* line 6, ../sass/navBar.scss */
+.navBar span {
+  display: inline-block;
+  float: right;
+  width: 12px;
+  height: 11px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+/* line 14, ../sass/navBar.scss */
+.navBar .minimize {
+  background: url(../../images/minimize.png) no-repeat center;
+}
+/* line 17, ../sass/navBar.scss */
+.navBar .Maximization {
+  background: url(../../images/Maximization.png) no-repeat center;
+}
+/* line 20, ../sass/navBar.scss */
+.navBar .navBarClose {
+  background: url(../../images/navBarClose.png) no-repeat center;
+}

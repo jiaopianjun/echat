@@ -1,0 +1,121 @@
+/* line 1, ../sass/Menu.scss */
+.Menu {
+  position: relative;
+  float: left;
+  width: 69px;
+  min-height: 638px;
+  height: 100%;
+  background: #191b2e;
+}
+/* line 8, ../sass/Menu.scss */
+.Menu .userImg {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: yellow;
+  margin: 14px 14px 40px 13px;
+}
+/* line 15, ../sass/Menu.scss */
+.Menu .userImg img {
+  width: 100%;
+  height: 100%;
+}
+/* line 20, ../sass/Menu.scss */
+.Menu .menuList {
+  width: 100%;
+  min-height: 100px;
+}
+/* line 23, ../sass/Menu.scss */
+.Menu .menuList li {
+  position: relative;
+  cursor: pointer;
+}
+/* line 26, ../sass/Menu.scss */
+.Menu .menuList li:hover, .Menu .menuList li.current {
+  background: #141626;
+}
+/* line 28, ../sass/Menu.scss */
+.Menu .menuList li:hover::before, .Menu .menuList li.current::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 50px;
+  border-left: 3px solid #00aaff;
+}
+/* line 37, ../sass/Menu.scss */
+.Menu .menuList li:hover.message div, .Menu .menuList li.current.message div {
+  background-position: 0 -21px;
+}
+/* line 40, ../sass/Menu.scss */
+.Menu .menuList li:hover.friends div, .Menu .menuList li.current.friends div {
+  background-position: 0 -22px;
+}
+/* line 44, ../sass/Menu.scss */
+.Menu .menuList li.message {
+  width: 20px;
+  height: 20px;
+  padding: 16px 25px 14px 24px;
+}
+/* line 48, ../sass/Menu.scss */
+.Menu .menuList li.message div {
+  width: 20px;
+  height: 20px;
+  background: url(../../images/message.png) no-repeat center top;
+}
+/* line 53, ../sass/Menu.scss */
+.Menu .menuList li.message span {
+  position: absolute;
+  left: 34px;
+  top: 7px;
+  display: inline-block;
+  padding: 0 7px;
+  height: 20px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 11px;
+  font-family: "Arial";
+  color: white;
+  background-color: #f74c31;
+}
+/* line 69, ../sass/Menu.scss */
+.Menu .menuList li.friends {
+  height: 21px;
+  width: 23px;
+  padding: 15px 23px;
+}
+/* line 73, ../sass/Menu.scss */
+.Menu .menuList li.friends div {
+  width: 23px;
+  height: 21px;
+  background: url(../../images/friends.png) no-repeat center top;
+}
+/* line 82, ../sass/Menu.scss */
+.Menu .otherList {
+  position: absolute;
+  left: 0;
+  bottom: 17px;
+  width: 69px;
+  min-height: 16px;
+}
+/* line 88, ../sass/Menu.scss */
+.Menu .otherList .addFriends {
+  width: 69px;
+  height: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+/* line 94, ../sass/Menu.scss */
+.Menu .otherList .addFriends:hover div {
+  background-position: 0 -17px;
+}
+/* line 98, ../sass/Menu.scss */
+.Menu .otherList .addFriends div {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url(../../images/add.png) no-repeat center top;
+}

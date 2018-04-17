@@ -1,0 +1,105 @@
+.RulePop{
+	position: absolute;
+	width:100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.pop{
+  position:absolute;
+  min-width:308px;
+  min-height:168px;
+  max-width:358px;
+  max-height:242px;
+  border:1px solid #1a1a1a;
+  margin:0 auto;
+  top:30%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:9999;
+  background:#fff;
+  h3{
+  	position:relative;
+	font-weight:normal;
+	height:37px;
+	line-height:37px;
+	padding:0 15px;
+	font-size: 14px;
+	font-family: "Microsoft YaHei";
+	color: rgb(179, 181, 199);
+	background:#191b2e;
+	.close{
+		float:right;
+		display:inline-block;
+		width:11px;
+		height:11px;
+		margin-top:13px;
+		background:url(../../images/navBarClose.png) no-repeat center;
+		cursor:pointer;
+	}
+  }
+  .contMessage{
+	font-size: 14px;
+	font-family: "Microsoft YaHei";
+	color: rgb(89, 89, 89);
+	text-align:center;
+	height:30px;
+	margin-top:45px;
+	i{
+		display:inline-block;
+		width:30px;
+		height:30px;
+		margin-right:10px;
+	}
+	span{
+		position:relative;
+		top:-9px;
+		display:inline-block;
+	}
+  }
+  .send{
+  	i{
+  		background:url(../../images/send.png) no-repeat center;
+  	}
+  }
+  .del{
+  	i{
+  		background:url(../../images/warn.png) no-repeat center;
+  	}
+  }
+  .box{
+  	text-align:center;
+  	margin:40px 40px;
+  	a{
+		display:inline-block;
+		text-align:center;
+		width: 122px;
+		height: 36px;
+		line-height:36px;
+		font-size: 14px;
+		font-family: "Microsoft YaHei";
+		text-decoration:none;
+		&:first-child{
+			color: rgb(255, 255, 255);
+			background-image: -moz-linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
+			background-image: linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
+			background-image: -webkit-linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
+			background-image: -ms-linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
+		}
+		&:last-child{
+			background-color: rgb(255, 255, 255);
+			border:1px solid rgb(220, 220, 220);
+			color: rgb(89, 89, 89);
+			margin-left:10px;
+		}
+  	}
+  }
+}
+.divMask{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:999;
+}

@@ -1,0 +1,162 @@
+/* line 3, ../sass/Reset.scss */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  /*font-size:100%;*/
+  font-style: normal;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* line 25, ../sass/Reset.scss */
+body {
+  /*line-height:1;*/
+}
+
+/* line 29, ../sass/Reset.scss */
+:focus {
+  outline: 0;
+}
+
+/* line 33, ../sass/Reset.scss */
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 38, ../sass/Reset.scss */
+nav ul {
+  list-style: none;
+}
+
+/* line 42, ../sass/Reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 46, ../sass/Reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 52, ../sass/Reset.scss */
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  outline: none;
+}
+
+/* line 62, ../sass/Reset.scss */
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 68, ../sass/Reset.scss */
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* line 75, ../sass/Reset.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* line 79, ../sass/Reset.scss */
+abbr[title], dfn[title] {
+  border-bottom: 1px dotted #000;
+  cursor: help;
+}
+
+/* line 84, ../sass/Reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 89, ../sass/Reset.scss */
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* line 98, ../sass/Reset.scss */
+input, select {
+  vertical-align: middle;
+}
+
+/* line 101, ../sass/Reset.scss */
+* {
+  outline: none;
+}
+
+/* line 104, ../sass/Reset.scss */
+.none {
+  display: none !important;
+}
+
+/* line 105, ../sass/Reset.scss */
+.fl {
+  float: left;
+}
+
+/* line 106, ../sass/Reset.scss */
+.fr {
+  float: right;
+}
+
+/* line 107, ../sass/Reset.scss */
+.cur {
+  cursor: pointer;
+}
+
+/* line 108, ../sass/Reset.scss */
+.clearfix {
+  *zoom: 1;
+}
+
+/* line 109, ../sass/Reset.scss */
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+/* line 110, ../sass/Reset.scss */
+li {
+  list-style: none;
+}
+
+/* line 111, ../sass/Reset.scss */
+body {
+  background: #f5f6f7;
+}

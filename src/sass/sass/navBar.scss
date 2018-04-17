@@ -1,0 +1,23 @@
+.navBar{
+  position:relative;
+  width:100%;
+  padding-top:19px;
+  height:11px;
+  span{
+  	display:inline-block;
+  	float:right;
+  	width:12px;
+  	height:11px;
+  	cursor:pointer;
+  	margin-right:20px;
+  }
+  .minimize{
+  	background:url(../../images/minimize.png) no-repeat center;
+  }
+  .Maximization{
+  	background:url(../../images/Maximization.png) no-repeat center;
+  }
+   .navBarClose{
+  	background:url(../../images/navBarClose.png) no-repeat center;
+  }
+}
