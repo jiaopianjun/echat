@@ -1,8 +1,8 @@
 # vue 多人聊天项目
 
 ###  主要用到
- vue-axios
- vuex
+ vue-axios<br/>
+ vuex<br/>
  sass 等
 
 
