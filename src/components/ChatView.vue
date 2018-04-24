@@ -1,19 +1,19 @@
 <template>
   <div :class="['ChatView clearfix',{'defaultState':isDefault == false}]">
     <navBar></navBar>
-    <div class="ChatViewCont" v-show="chatData[0].name != 'default'">
+    <div class="ChatViewCont" v-show="chatData.nickname != 'default'">
        <div class="ChatViewContMenu">
-         <span class="">{{chatData[0].name}}</span>
-         <em v-if="chatData[0].state != ''">正在玩：{{chatData[0].state}}</em>
+         <span class="">{{chatData.nickname}}</span>
+         <em v-if="chatData.playing_status != 0">正在玩：{{chatData.playing_status != 0 && chatData.nickname != 'default' ? chatData.playing_game_info.name : ''}}</em>
        </div>
        <div class="ChatViewContWarp">
           <div class="v_a">
              <ul class="a_b">
-                <li :class="list.istype" v-for="(list,index) in Chatrecord">
+                <li :class="list.is_type" v-for="(list,index) in messageList">
                     <p class="chatTime" v-if="list.time">{{list.time}}</p>
                     <div class="chatStrip clearfix">
                        <div class="chatUserImg">
-                          <img src="../images/default.png"/>
+                          <img :src="list.avatar"/>
                        </div>
                        <div class="chatText">{{list.text}}</div>
                        <div class="chatState"></div>
@@ -31,7 +31,7 @@
           </div>
           <div class="edCont">
             <div class="edContWarp" contenteditable="true" @keydown.13="enter($event)" id="sendTextarea" @focus="removeSendTs"></div>
-            <span v-show="placeholder">按回车键发送消息...</span>
+            <span v-show="tshow">按回车键发送消息...</span>
           </div>
        </div>
     </div>
@@ -44,13 +44,16 @@ export default {
   components:{
     navBar:navBar
   },
-  props:['chatData','isDefault','placeholder'],
+  props:['chatData','isDefault','sendMsg'],
   watch:{
     chatData:{  
-      handler:function(val,oldval){  
+      handler:function(val,oldval){
+        if(val.messages){
+          this.messageList = val.messages
+        }
         $(document).ready(function(){ 
           $(".edContWarp").html('');
-          $(".v_a").scrollTop($(".v_a")[0].scrollHeight+160);
+          $(".v_a").scrollTop($(".v_a")[0].scrollHeight + 160);
         })
       },  
       deep:true
@@ -58,52 +61,67 @@ export default {
     Chatrecord:{  
       handler:function(val,oldval){  
         $(document).ready(function(){ 
-          $(".v_a").scrollTop($(".v_a")[0].scrollHeight+160);
+          $(".v_a").scrollTop($(".v_a")[0].scrollHeight + 160);
         })
       },  
       deep:true
+    },
+    "$store.state.peinfo.list":function(){
+      if(this.$store.state.peinfo.list){
+        this.data.peinfo = this.$store.state.peinfo.list
+
+      }
+    },
+    "$store.state.record.list":function(){
+      // console.log(this.$store.state.record.list,'dd')
     }
   },
   data () {
     return {
-      Chatrecord:[
-        {"istype":"isOther","time":"2018-02-06 :15:30:09","text":"好无聊哦"},
-        {"istype":"isSelf","time":"2018-02-06 :15:31:09","text":"是的呢，明天去哪儿玩啊"},
-        {"istype":"isSelf","time":"","text":"不知道啊，你呢"},
-        {"istype":"isOther","time":"2018-02-06 :15:33:09","text":"我去苏州哦，要不要一起"},
-        {"istype":"isOther","time":"","text":"等会去找你我们一起啊"}
-      ]
+      tshow:this.sendMsg,
+      messageList:[],
+      data:{
+        sendmessageUrl:'http://stoneapi.snail.com/v2/user/friend/send-text-message',
+        peoinfo:[],
+      }
     }
   },
   methods: {
-    ohterText:function(text){
-      var _this = this
-      var newMessage = {"istype":"isOther","time":"","text":text}
-      setTimeout(function(){
-         _this.Chatrecord.push(newMessage)
-           $(".v_a").scrollTop($(".v_a")[0].scrollHeight+160);
-       },100)
+    saveRecord:function(data){
+      var list = {
+        "session_id":this.chatData.session_id,
+        messages:[]
+      };
+      list.messages.push(data)
+       console.log('1')
+      this.$store.commit('chatrecordstate',{data:list,type:'on'})
     },
     sendText:function(text){
-       var newMessage = {"istype":"isSelf","time":"","text":text}
-       this.Chatrecord.push(newMessage)
-       $(document).ready(function(){ 
-         $(".v_a").scrollTop($(".v_a")[0].scrollHeight+160);
-       })
+      var on = { 
+        is_type:"isSelf",
+        time:"",
+        text:text,
+        avatar:this.$store.state.peinfo.list.avatar
+      }
+      this.messageList.push(on)
+
+      this.saveRecord(on)
     },
     enter:function(obj){ 
       var e = e || window.event, ec = e.keyCode || e.which;
       if (!e.ctrlKey && 13 == ec) {
         if($('.edContWarp').text() != '') {
           this.sendText($('.edContWarp').text())
-          // this.ohterText($('.edContWarp').text())
         }
+        $(document).ready(function(){ 
+          $(".v_a").scrollTop($(".v_a")[0].scrollHeight+160);
+        })
         $('.edContWarp').html('')
         obj.preventDefault();
         return false;
       }else if (e.ctrlKey && 13 == ec) {
         $("#sendTextarea").append("<div><br/></div>");
-        var o = document.getElementById("sendTextarea").lastChild;            
+        var o = document.getElementById("sendTextarea").lastChild;        
         var textbox = document.getElementById('sendTextarea');
         var sel = window.getSelection();
         var range = document.createRange();
@@ -116,7 +134,14 @@ export default {
       }   
     },
     removeSendTs:function(){
-      this.placeholder = false
+      this.tshow = false
+    },
+    sendMessage:function(){
+      this.$post(this.data.sendmessageUrl).then((response) => {
+        if(response.code === 200){
+          
+        }
+      })
     }
   },
   mounted(){

@@ -8,7 +8,7 @@
             <span>{{type === 'del' ? '确定要移除 '+ delInfo.name +' 吗？' : message[type]}}</span>
           </div>
           <div class="box" v-show="type === 'del'">
-            <a href="javascript:;">确定</a>
+            <a href="javascript:;" @click="delFriends()">确定</a>
             <a href="javascript:;" @click="$store.commit('rulestate',{type:'',status:false,data:{}})">取消</a>
           </div>
        </div>
@@ -29,25 +29,34 @@ export default {
       },
       delInfo:{
         name:"default",
-        chatObjectId:"default"
+        chatObjectId:"default",
+        data:[]
       },
-      type:''
+      type:'',
+      data:{
+        delUrl:"http://stoneapi.snail.com/v2/user/friend/delete"
+      }
     }
   },
   watch:{
     "$store.state.rule.list":function(){
-      var newData = $.extend(true, {}, this.$store.state.rule.list)
+      var newData = $.extend(true, [], this.$store.state.rule.list)
       if(newData){
-         this.delInfo.chatObjectId = newData.id
-         this.delInfo.name = newData.name
+         this.delInfo.chatObjectId = newData.aid
+         this.delInfo.name = newData.nickname
+         this.delInfo.data = newData
          this.type = this.$store.state.rule.type
       }
     }
   },
   methods: {
-    // cancel:function(){
-    //   alert($('.dd').attr('data-ss'))
-    // }
+    delFriends:function(){
+      this.$post(this.data.delUrl,{friend_aid:this.delInfo.chatObjectId}).then((response) => {
+        if(response.code === 200){
+          this.$store.commit('rulestate',{type:'delete',status:false,data:this.delInfo.data})
+        }
+      })
+    }
   },
   mounted(){
   },

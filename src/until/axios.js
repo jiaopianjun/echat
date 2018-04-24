@@ -9,9 +9,10 @@ axios.defaults.baseURL ='';
 axios.interceptors.request.use(
   config => {
     // const token = getCookie('名称');注意使用的时候需要引入cookie方法，推荐js-cookie
-    config.data = JSON.stringify(config.data);
+    // config.data = JSON.stringify(config.data);
     config.headers = {
-      'Content-Type':'application/x-www-form-urlencoded'
+      // 'Content-Type':'application/json'
+      // 'Content-Type':'application/x-www-form-urlencoded'
     }
     // if(token){
     //   config.params = {'token':token}
@@ -51,6 +52,7 @@ axios.interceptors.response.use(
 export function fetch(url,params={}){
   return new Promise((resolve,reject) => {
     axios.get(url,{
+      withCredentials:true,
       params:params
     })
     .then(response => {
@@ -72,8 +74,9 @@ export function fetch(url,params={}){
 
  export function post(url,data = {}){
    return new Promise((resolve,reject) => {
-     axios.post(url,data)
-          .then(response => {
+      axios.post(url,data,{
+        withCredentials:true
+      }).then(response => {
             resolve(response.data);
           },err => {
             reject(err)

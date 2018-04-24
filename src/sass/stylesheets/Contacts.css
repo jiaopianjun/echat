@@ -200,7 +200,7 @@
 }
 /* line 176, ../sass/Contacts.scss */
 .Contacts .ContactsBox .ChatList .addContactsList {
-  max-height: 128px;
+  height: 128px;
 }
 /* line 179, ../sass/Contacts.scss */
 .Contacts .ContactsBox .ChatList .myFriendsList {

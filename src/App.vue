@@ -12,7 +12,7 @@ export default {
     }
   },
   mounted () {
-
+    this.socket()
   },
   created: function () {
     $(window).resize(function(){

@@ -7,22 +7,22 @@
       <div class="ChatList clearfix">
         <div class="ulwrapper">
           <ul>
-             <li v-for="(list,index) in test" :class="[list.index == 0 ? 'current':'']" @click="adclick(list)">
-                <div :class="[list.online == false ? 'offline':'']">
+             <li v-for="(list,index) in data.offlinelist" :class="[list.index == 0 ? 'current':'']" @click="adclick(list)" :useraid="list.aid" :sessionid="list.session_id">
+                <div :class="[list.is_online == 0 ? 'offline':'']">
                     <div class="userHd">
-                      <div class="userHdImg"><img src="../images/default.png"/></div>
-                      <span class="onlineState online_game" v-if="list.state != ''">
-                        <em><i></i>正在玩{{list.state}}</em>
+                      <div class="userHdImg"><img :src="list.avatar"/></div>
+                      <span class="onlineState online_game" v-if="list.playing_status != 0">
+                        <em><i></i>正在玩{{list.playing_game_info.name}}</em>
                       </span>
                     </div>
                     <div class="userInfo">
                        <div class="userInfoA">
-                          <span class="name textHidden">{{list.name}}</span>
-                          <span class="userMessageNum textHidden" v-if="list.messagenum > 0" :num="list.messagenum">{{list.messagenum > 99 ? '99+': list.messagenum}}</span>
+                          <span class="name textHidden">{{list.nickname}}</span>
+                          <span class="userMessageNum textHidden" v-if="list.message_count > 0" :num="list.message_count">{{list.message_count > 99 ? '99+': list.message_count}}</span>
                        </div>
                        <div class="userInfoB">
-                          <span class="oneMessage textHidden">{{list.newmessage}}</span>
-                          <span class="userInfoTime textHidden">{{list.newtime}}</span>
+                          <span class="oneMessage textHidden">{{list.last_message}}</span>
+                          <span class="userInfoTime textHidden">{{list.last_send_at}}</span>
                        </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-    <ChatView :chatData.sync="chatData" :isDefault.sync="isDefault" :placeholder.sync="placeholder"></ChatView>
+    <ChatView :chatData.sync="chatData" :isDefault.sync="isDefault" :sendMsg.sync="sendMsg"></ChatView>
   </div>
 </template>
 <script>
@@ -43,55 +43,100 @@ export default {
   },
   data () {
     return {
-      test:[{"id":"1","name":"周杰伦","state":"NBA2k18","online":true,"newmessage":"你出来 我找你有事","newtime":"10:00","messagenum":13},
-      {"id":"2","name":"张惠妹","state":"王者荣耀","online":false,"newmessage":"我一会就来","newtime":"12:00","messagenum":0},
-      {"id":"3","name":"郭德纲","state":"","online":true,"newmessage":"我要去说相声了","newtime":"16:00","messagenum":133}],
-      chatData:[{"name":"default"}],
+      chatData:{"nickname":"default"},
       isDefault:false,
-      placeholder:true
+      sendMsg:true,
+      data:{
+        offlinelist:[],
+        offlineUrl:'http://stoneapi.snail.com/v2/user/friend/offline-message-list',
+        offineContNum:0
+      },
+      claerMessageUrl:'http://stoneapi.snail.com/v2/user/friend/set-message-read'
     }
   },
   watch:{
     "$store.state.menu.list":function(){
       var newData = $.extend(true, [], this.$store.state.menu.list),
-          oldData = $.extend(true, [], this.test),
-          storeData = [];
+          oldData = $.extend(true, [], this.data.offlinelist),
+          storeData = [],
+          recordData = $.extend(true, [], this.$store.state.record.list),
+          newrecordData = {"session_id":"",messages:[]},
+          tempData = [];
       if(newData[0]){
         for(var i in oldData){
-          if(oldData[i].id !== newData[0].id){
+          if(oldData[i].aid !== newData[0].aid){
              storeData.push(oldData[i])
           }
         }
         storeData.unshift(newData[0])
-        this.test = $.extend(true, [], storeData)
-        this.chatData = $.extend(true, [], newData)
-        $(".Chat .ulwrapper li").removeClass('current').eq(0).addClass('current');
-        this.claerMessageNum()
+        this.data.offlinelist = $.extend(true, [], storeData)
+        this.chatData = $.extend(true, [], newData[0])
+        $(".Chat .ulwrapper li").removeClass('current').eq(0).addClass('current'); 
+
+        if(recordData.length > 0){
+          for(var i in recordData){
+            if(recordData[i].session_id === newData[0].session_id){
+              tempData = recordData[i].messages
+            }else{
+              this.chatData.messages = []
+            }
+          }
+          newrecordData.messages = this.chatData.messages = $.extend(true, [], tempData)
+          newrecordData.session_id = newData[0].session_id
+          this.$store.commit('chatrecordstate',{data:newrecordData})
+        }else{
+          this.chatData.messages = []
+          newrecordData.session_id = newData[0].session_id
+          this.$store.commit('chatrecordstate',{data:newrecordData})
+        }
       }
     }
   },
   methods: {
     adclick:function(list){
-      var dom = event.currentTarget;
+      var dom = event.currentTarget,
+          chatrecordata = this.$store.state.record.list,
+          messages;
       $(".Chat .ulwrapper li").removeClass('current');
       $(dom).addClass('current').find('.userMessageNum').hide();
-      this.chatData[0].name=list.name
-      this.chatData[0].state=list.state
-      this.isDefault = this.placeholder = true
-      this.$store.commit('menustate',{messageNum:parseInt(this.$store.state.menu.messageNum) - parseInt(list.messagenum)})
+      
+      if(chatrecordata){
+        for(var i in chatrecordata){
+          if(chatrecordata[i].session_id === list.session_id){
+             messages = chatrecordata[i].messages
+          }
+        }
+      }
+      list.messages = $.extend(true, [], messages)
+      this.chatData = list
+      this.isDefault = this.sendMsg = true
+      this.claerMessageNum(list.session_id,list.message_count)
     },
-    claerMessageNum:function(){
-      this.$store.commit('menustate',{messageNum:parseInt(this.$store.state.menu.messageNum) - parseInt(list.messagenum)})
-    }
+    claerMessageNum:function(session_id,message_count){
+      // 设置消息为已读
+      this.$post(this.claerMessageUrl,{session_id:session_id}).then((response) => {
+        if(response.code === 200){
+          this.$store.commit('menustate',{messageNum:parseInt(this.$store.state.menu.messageNum) - parseInt(message_count)})
+        }
+      })
+    },
   },
   mounted(){
+    this.$fetch(this.data.offlineUrl).then((response) => {
+      if(response.code === 200){
+        this.data.offlinelist = response.list
+        this.data.offineContNum = response.sum_count
+        this.$store.commit('menustate',{messageNum:response.sum_count})
+      }
+    })
   },
   created: function () {
-    var allnum = 0;
-    for(var i in this.test){
-       allnum += parseInt(this.test[i].messagenum)
-    }
-    this.$store.commit('menustate',{messageNum:allnum})
+    $(window).resize(function(){
+      $('.Chat').height($(window).height()-2)
+    })
+    $(function(){
+      $('.Chat').height($(window).height()-2)
+    })
   }
 }
 </script>

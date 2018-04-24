@@ -1,8 +1,8 @@
 <template>
   <div class="Index clearfix"  id="Index">
     <div class="Menu" id="Menu">
-      <div class="userImg">
-        <img src="../images/default.png"/>
+      <div class="userImg" :peraid="data.info.aid">
+        <img :src="data.info.avatar"/>
       </div>
       <ul class="menuList">
         <li :class="['message',{'current':$store.state.menu.cause === true && $store.state.menu.other === false}]" @click="$store.commit('menustate',{type:true,flag:false,messageNum:$store.state.menu.messageNum})">
@@ -28,8 +28,6 @@
   </div>
 </template>
 <script>
-// import Menu from './Menu.vue'
-// import Content from './Content.vue'
 import RulePop from './RulePop.vue'
 import Chat from './Chat.vue'
 import Contacts from './Contacts.vue'
@@ -38,8 +36,6 @@ import store from '@/store/index.js'
 export default {
   name: 'Index',
   components: {
-    // Menu: Menu,
-    // Content: Content,
     RulePop:RulePop,
     Chat: Chat,
     Contacts: Contacts,
@@ -48,16 +44,23 @@ export default {
   data () {
     return {
       iscurrent:this.$store.state.menu.cause,
-      AddContacts:this.$store.state.menu.other
+      AddContacts:this.$store.state.menu.other,
+      data:{
+        info:[],
+        peInfoUrl:'http://stoneapi.snail.com/v2/user/info'
+      }
+      
     }
   },
   methods: {
   },
   mounted(){
-    // this.$fetch('/api/v2/movie/top250',{'dd':'ddd'})
-    //   .then((response) => {
-    //     console.log(response)
-    //   })
+    this.$fetch(this.data.peInfoUrl).then((response) => {
+      if(response.code === 200){
+        this.data.info = response
+        this.$store.commit('perinfo',{data:response})
+      }
+    })
   },
   created: function () {
     $(window).resize(function(){
@@ -65,7 +68,7 @@ export default {
       $('.Menu').height($(window).height()-2)
       $('.ChatList').height($(window).height()-72)
       $(".myFriendsList").height($(window).height()-252)
-      $('.ContactsView,.ChatView').width($(window).width()-332).height($(window).height()-2)
+      $('.ContactsView').width($(window).width()-332).height($(window).height()-2)
       $('.ContactsViewWarp,.ContactsViewCont,.ChatViewContWarp').height($(window).height()-237)
     })
     $(function(){
@@ -73,14 +76,12 @@ export default {
       $('.ChatList').height($(window).height()-72)
       $('.Menu').height($(window).height()-2)
       $(".myFriendsList").height($(window).height()-252)
-      $('.ContactsView,.ChatView').width($(window).width()-332).height($(window).height()-2)
+      $('.ContactsView').width($(window).width()-332).height($(window).height()-2)
       $('.ContactsViewWarp,.ContactsViewCont,.ChatViewContWarp').height($(window).height()-237)
     })
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   @import '../sass/stylesheets/Index.css'
 </style>

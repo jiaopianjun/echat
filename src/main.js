@@ -10,15 +10,16 @@ import store from './store'
 import {post,fetch,patch,put} from './until/axios'
 
 //定义全局变量
-Vue.prototype.$post=post;
-Vue.prototype.$fetch=fetch;
-Vue.prototype.$patch=patch;
-Vue.prototype.$put=put;
+Vue.prototype.$post = post
+Vue.prototype.$fetch = fetch
+Vue.prototype.$patch = patch
+Vue.prototype.$put = put
 
 Vue.config.productionTip = false
 
+import socket from './socket/socket'
+Vue.use(socket);
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,

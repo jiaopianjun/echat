@@ -5,7 +5,7 @@ import EasyScroll from 'easyscroll'
 import VueContextMenu from 'vue-contextmenu'
 import 'vue-contextmenu/style/css/font-awesome.min.css'
 Vue.use(VueContextMenu)
-Vue.use(EasyScroll)
+// Vue.use(EasyScroll)
 
 Vue.use(Router)
 
