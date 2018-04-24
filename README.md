@@ -1,6 +1,12 @@
-# y
+# vue 多人聊天项目
 
-> A Vue.js project
+###  主要用到
+ vue-axios<br/>
+ vuex<br/>
+ sass 等<br/>
+
+![](https://user-gold-cdn.xitu.io/2018/4/17/162d26a52c7018ff?w=940&h=640&f=gif&s=1526168)
+
 
 ## Build Setup
 
