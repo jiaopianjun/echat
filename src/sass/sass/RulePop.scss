@@ -62,7 +62,7 @@
   		background:url(../../images/send.png) no-repeat center;
   	}
   }
-  .del{
+  .del,.timeout,.other{
   	i{
   		background:url(../../images/warn.png) no-repeat center;
   	}
@@ -85,12 +85,30 @@
 			background-image: linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
 			background-image: -webkit-linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
 			background-image: -ms-linear-gradient( 0deg, rgb(0,149,255) 1%, rgb(48,240,240) 100%);
+			&:active{
+			  background-image: -moz-linear-gradient( 0deg, rgb(6,119,235) 1%, rgb(1,217,231) 100%);
+			  background-image: -webkit-linear-gradient( 0deg, rgb(6,119,235) 1%, rgb(1,217,231) 100%);
+			  background-image: -ms-linear-gradient( 0deg, rgb(6,119,235) 1%, rgb(1,217,231) 100%);
+			  background-image: linear-gradient( 0deg, rgb(6,119,235) 1%, rgb(1,217,231) 100%);
+			}
+			&:hover{
+			  background-image: -moz-linear-gradient( 0deg, rgb(3,139,254) 1%, rgb(8,221,229) 100%);
+			  background-image: -webkit-linear-gradient( 0deg, rgb(3,139,254) 1%, rgb(8,221,229) 100%);
+			  background-image: -ms-linear-gradient( 0deg, rgb(3,139,254) 1%, rgb(8,221,229) 100%);
+			  background-image: linear-gradient( 0deg, rgb(3,139,254) 1%, rgb(8,221,229) 100%);
+			}
 		}
 		&:last-child{
 			background-color: rgb(255, 255, 255);
 			border:1px solid rgb(220, 220, 220);
 			color: rgb(89, 89, 89);
 			margin-left:10px;
+            &:hover{
+            	background-color: rgb(245, 246, 247);
+            }
+            &:active{
+            	background-color: rgb(237, 239, 240);
+            }
 		}
   	}
   }

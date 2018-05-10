@@ -167,11 +167,12 @@
 }
 /* line 150, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edMenu {
+  display: none;
   width: 100%;
   height: 18px;
   padding-top: 22px;
 }
-/* line 154, ../sass/ChatView.scss */
+/* line 155, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edMenu .edMenuIcon {
   position: relative;
   float: left;
@@ -180,25 +181,26 @@
   height: 17px;
   margin-left: 20px;
   cursor: pointer;
+  overflow: hidden;
 }
-/* line 163, ../sass/ChatView.scss */
+/* line 165, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edMenu .face {
   height: 18px;
   background: url(../../images/face.png) no-repeat center top;
 }
-/* line 166, ../sass/ChatView.scss */
+/* line 168, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edMenu .face:hover {
   background-position: 0 -19px;
 }
-/* line 170, ../sass/ChatView.scss */
+/* line 172, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edMenu .image {
   background: url(../../images/img.png) no-repeat center top;
 }
-/* line 172, ../sass/ChatView.scss */
+/* line 174, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edMenu .image:hover {
   background-position: 0 -18px;
 }
-/* line 175, ../sass/ChatView.scss */
+/* line 177, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edMenu .image input {
   position: relative;
   top: -5px;
@@ -207,27 +209,27 @@
   opacity: 0;
   cursor: pointer;
 }
-/* line 185, ../sass/ChatView.scss */
+/* line 187, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edCont {
   position: relative;
   padding: 0 15px;
-  height: 85px;
+  height: 103px;
   margin: 10px 0;
   overflow: hidden;
   overflow-y: auto;
 }
-/* line 192, ../sass/ChatView.scss */
+/* line 195, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edCont::-webkit-scrollbar {
   width: 5px;
   height: 4px;
 }
-/* line 196, ../sass/ChatView.scss */
+/* line 199, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edCont::-webkit-scrollbar-thumb {
   border-radius: 5px;
   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.2);
 }
-/* line 201, ../sass/ChatView.scss */
+/* line 204, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edCont .edContWarp {
   width: 100%;
   height: 100%;
@@ -235,13 +237,13 @@
   font-size: 13px;
   color: #666;
 }
-/* line 207, ../sass/ChatView.scss */
+/* line 210, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edCont .edContWarp .img {
   display: inline-block;
   width: 80px;
   height: 80px;
 }
-/* line 213, ../sass/ChatView.scss */
+/* line 216, ../sass/ChatView.scss */
 .ChatView .ChatViewContEditer .edCont span {
   position: absolute;
   top: 5px;
@@ -251,7 +253,7 @@
   -web-user-select: none;
 }
 
-/* line 224, ../sass/ChatView.scss */
+/* line 227, ../sass/ChatView.scss */
 .defaultState {
   background: #F7F9FA url(../../images/defaultState.png) no-repeat center right;
 }

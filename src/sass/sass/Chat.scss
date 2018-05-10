@@ -54,6 +54,13 @@
    	  	  height:auto;
           min-height:568px;
    	  	}
+        .current{
+          .userMessageNum{
+            display:none;
+            opacity:0;
+            -webkit-opacity:0;
+          }
+        }
    	  	li{
           height:42px;
           padding:11px 12px;

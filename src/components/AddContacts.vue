@@ -4,17 +4,19 @@
      <div class="AddContactsBox">
         <h3>添加好友</h3>
         <div class="AddContactsSerchBox">
-            <input type="text" placeholder="请输入好友昵称..."/>
-            <span>搜索</span>
+            <input type="text" placeholder="请输入用户名/好友昵称..." id="serchInput" @focus="delStatus" @keydown.13="enter($event)"/>
+            <span @click="serchBtn">搜索</span>
+            <p v-if="status">{{statusMessage}}</p>
         </div>
+
         <div class="AddContactsSerchListBox">
-           <h4>搜索结果 <a href="javascript:;"> <查看推荐好友</a></h4>
+           <h4>搜索结果 <a href="javascript:;" v-if="false"> <查看推荐好友</a></h4>
            <ul>
-               <li v-for="(list,index) in data">
-                   <div class="imgHd"><img :src="list.img"/></div>
+               <li v-for="(list,index) in data.list" :id="list.aid" :ueraid="list.aid" v-if="(list.status != 2) && (list.aid != isselfAid)" :aa="isselfAid">
+                   <div class="imgHd"><img :src="list.avatar"/></div>
                    <div class="userInfo">
-                      <p>{{list.name}} <i :class="list.sex"></i></p>
-                      <span :class="list.state === false ? 'addFriends':'addProving'" @click="addFriend(list.state)"><img src="../images/addFriends.png" v-if="list.state === false"/>{{list.state === false ? '好友':'待验证'}}</span>
+                      <p>{{list.nickname}} <i :class="list.sex" v-if="false"></i></p>
+                      <span :class="list.status === 0  ? 'addFriends':'addProving'" @click="addFriend(list.status,list.aid,index)"><img src="../images/addFriends.png" v-if="list.status === 0"/>{{list.status === 0 ? '好友':'待验证'}}</span>
                    </div>
                </li>
            </ul>
@@ -30,19 +32,62 @@ export default {
   components:{
     navBar:navBar
   },
+  watch:{
+    "$store.state.peinfo.list":function(){
+      if(this.$store.state.peinfo.list){
+        this.isselfAid = this.$store.state.peinfo.list.aid
+      }
+    },
+  },
   data () {
     return {
-      data:[
-            {'img':"http://www.dgtle.com/uc_server/data/avatar/000/44/63/19_avatar_middle.jpg","id":"1","name":"杨幂","sex":"w","state":false},
-            {'img':"http://www.dgtle.com/uc_server/data/avatar/000/33/89/35_avatar_big.jpg","id":"2","name":"鹿晗","sex":"m","state":true},
-            {'img':"http://www.dgtle.com/uc_server/data/avatar/000/88/27/42_avatar_middle.jpg","id":"3","name":"刘诗诗","sex":"w","state":false}
-          ]
+      data:{
+        serchFriendsUrl:'http://stoneapi.snail.com/v2/user/friend/search',
+        addFriendUrl:'http://stoneapi.snail.com/v2/user/friend/apply',
+        list:[]
+      },
+      status:false,
+      statusMessage:'',
+      isselfAid:0
     }
   },
   methods: {
-    addFriend:function(state){
-      if(state === false){
-        this.$store.commit('rulestate',{type:'send',status:true,data:''})
+    enter:function(e){
+      this.serchBtn()
+    },
+    delStatus:function(){
+      this.status = false
+    },
+    serchBtn:function(){
+      if($("#serchInput").val()){
+        this.post($("#serchInput").val().replace(/(^\s*)|(\s*$)/g, ""))
+      }else{
+        this.status = true
+        this.statusMessage = '请输入好友昵称...'
+      }
+    },
+    post:function(name){
+      this.$fetch(this.data.serchFriendsUrl,{q:name,perPage:20}).then((response) => {
+        if(response.code == 200){
+          this.data.list = response.list
+          if(response.list.length === 0){
+            this.status = true
+            this.statusMessage = '没有找到您要搜索的好友...'
+          }
+        }
+      })
+    },
+    addFriend:function(status,aid,index){
+      if(status === 0){
+        this.$post(this.data.addFriendUrl,{friend_aid:aid}).then((response) => {
+          if(response.code == 200){
+            this.$store.commit('rulestate',{type:'send',status:true,data:''})
+            this.data.list[index].status = 1
+          }else{
+            var data = {"message":response.message}
+            this.$store.commit('rulestate',{type:'other',status:true,data:data})
+          }
+        })
       }
     }
   },

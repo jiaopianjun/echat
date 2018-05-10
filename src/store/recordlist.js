@@ -26,9 +26,7 @@ export default {
                 }else{
                     state.list.push(data.data)
                 }  
-            }
-            
-            
+            } 
         }
     }
 }

@@ -91,7 +91,21 @@
           height:21px;
           background:url(../../images/friends.png) no-repeat  center top;
         }
-        
+        span{
+          position:absolute;
+          left:34px;
+          top:7px;
+          display:inline-block;
+          padding:0 7px;
+          height:20px;
+          border-radius:10px;
+          text-align:center;
+          line-height:20px;
+          font-size: 11px;
+          font-family: "Arial";
+          color: rgb(255, 255, 255);
+          background-color: rgb(247, 76, 49);
+        }
       }
     }
   }

@@ -6,7 +6,9 @@ import router from './router'
 import $ from 'jquery'
 import axios from 'axios'
 import store from './store'
+import vuex from 'vuex'
 
+Vue.use(vuex);
 import {post,fetch,patch,put} from './until/axios'
 
 //定义全局变量
@@ -17,8 +19,8 @@ Vue.prototype.$put = put
 
 Vue.config.productionTip = false
 
-import socket from './socket/socket'
-Vue.use(socket);
+// import socket from './socket/socket'
+// Vue.use(socket);
 
 new Vue({
   el: '#app',

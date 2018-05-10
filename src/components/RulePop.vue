@@ -25,7 +25,8 @@ export default {
         "toplimit":"好友数量已达上限(｀ﾟДﾟ´)ゞ",
         "timeout":"网络超时(Ｔ▽Ｔ)",
         "send":"好友申请已发送(～￣▽￣)～ ",
-        "del":"确定要移除 Jaychou 吗？"
+        "del":"确定要移除 Jaychou 吗？",
+        "other":""
       },
       delInfo:{
         name:"default",
@@ -46,6 +47,7 @@ export default {
          this.delInfo.name = newData.nickname
          this.delInfo.data = newData
          this.type = this.$store.state.rule.type
+         this.message.other = newData.message
       }
     }
   },

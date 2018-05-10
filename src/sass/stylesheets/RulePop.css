@@ -71,7 +71,7 @@
   background: url(../../images/send.png) no-repeat center;
 }
 /* line 66, ../sass/RulePop.scss */
-.pop .del i {
+.pop .del i, .pop .timeout i, .pop .other i {
   background: url(../../images/warn.png) no-repeat center;
 }
 /* line 70, ../sass/RulePop.scss */
@@ -98,15 +98,37 @@
   background-image: -webkit-linear-gradient(0deg, #0095ff 1%, #30f0f0 100%);
   background-image: -ms-linear-gradient(0deg, #0095ff 1%, #30f0f0 100%);
 }
-/* line 89, ../sass/RulePop.scss */
+/* line 88, ../sass/RulePop.scss */
+.pop .box a:first-child:active {
+  background-image: -moz-linear-gradient(0deg, #0677eb 1%, #01d9e7 100%);
+  background-image: -webkit-linear-gradient(0deg, #0677eb 1%, #01d9e7 100%);
+  background-image: -ms-linear-gradient(0deg, #0677eb 1%, #01d9e7 100%);
+  background-image: linear-gradient(0deg, #0677eb 1%, #01d9e7 100%);
+}
+/* line 94, ../sass/RulePop.scss */
+.pop .box a:first-child:hover {
+  background-image: -moz-linear-gradient(0deg, #038bfe 1%, #08dde5 100%);
+  background-image: -webkit-linear-gradient(0deg, #038bfe 1%, #08dde5 100%);
+  background-image: -ms-linear-gradient(0deg, #038bfe 1%, #08dde5 100%);
+  background-image: linear-gradient(0deg, #038bfe 1%, #08dde5 100%);
+}
+/* line 101, ../sass/RulePop.scss */
 .pop .box a:last-child {
   background-color: white;
   border: 1px solid gainsboro;
   color: #595959;
   margin-left: 10px;
 }
+/* line 106, ../sass/RulePop.scss */
+.pop .box a:last-child:hover {
+  background-color: #f5f6f7;
+}
+/* line 109, ../sass/RulePop.scss */
+.pop .box a:last-child:active {
+  background-color: #edeff0;
+}
 
-/* line 98, ../sass/RulePop.scss */
+/* line 116, ../sass/RulePop.scss */
 .divMask {
   position: absolute;
   top: 0;

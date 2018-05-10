@@ -18,12 +18,13 @@
 }
 /* line 17, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchBox {
+  position: relative;
   margin: 52px auto 60px;
   width: 418px;
   height: 38px;
   border: 1px solid #00aaff;
 }
-/* line 22, ../sass/AddContacts.scss */
+/* line 23, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchBox input {
   width: 299px;
   height: 38px;
@@ -34,7 +35,7 @@
   background: url(../../images/icon.png) no-repeat 15px center;
   font-size: 14px;
 }
-/* line 32, ../sass/AddContacts.scss */
+/* line 33, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchBox span {
   float: right;
   display: inline-block;
@@ -47,16 +48,24 @@
   font-family: "Microsoft YaHei";
   background: #00aaff;
 }
-/* line 43, ../sass/AddContacts.scss */
+/* line 44, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchBox span:hover {
   background: #009bf5;
   cursor: pointer;
 }
 /* line 49, ../sass/AddContacts.scss */
+.AddContacts .AddContactsBox .AddContactsSerchBox p {
+  position: absolute;
+  top: 50px;
+  font-size: 13px;
+  font-family: "Microsoft YaHei";
+  color: red;
+}
+/* line 57, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox {
   padding: 0 20px;
 }
-/* line 51, ../sass/AddContacts.scss */
+/* line 59, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox h4 {
   height: 32px;
   font-size: 14px;
@@ -64,7 +73,7 @@
   color: #404040;
   font-weight: normal;
 }
-/* line 57, ../sass/AddContacts.scss */
+/* line 65, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox h4 a {
   font-size: 14px;
   font-family: "Microsoft YaHei";
@@ -72,25 +81,25 @@
   text-decoration: none;
   margin-left: 30px;
 }
-/* line 65, ../sass/AddContacts.scss */
+/* line 73, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul {
   width: 100%;
   height: 365px;
   overflow: hidden;
   overflow-y: auto;
 }
-/* line 70, ../sass/AddContacts.scss */
+/* line 78, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul::-webkit-scrollbar {
   width: 5px;
   height: 4px;
 }
-/* line 74, ../sass/AddContacts.scss */
+/* line 82, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul::-webkit-scrollbar-thumb {
   border-radius: 5px;
   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   background: rgba(0, 0, 0, 0.2);
 }
-/* line 79, ../sass/AddContacts.scss */
+/* line 87, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li {
   float: left;
   width: 206px;
@@ -102,11 +111,11 @@
   overflow: hidden;
   transition: all .3s linear .1s;
 }
-/* line 92, ../sass/AddContacts.scss */
+/* line 100, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li:hover {
   box-shadow: 0px 5px 5px 0px rgba(4, 0, 0, 0.06);
 }
-/* line 95, ../sass/AddContacts.scss */
+/* line 103, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .imgHd {
   float: left;
   width: 60px;
@@ -115,17 +124,17 @@
   overflow: hidden;
   margin-right: 16px;
 }
-/* line 102, ../sass/AddContacts.scss */
+/* line 110, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .imgHd img {
   width: 100%;
   height: 100%;
 }
-/* line 107, ../sass/AddContacts.scss */
+/* line 115, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .userInfo {
   float: left;
   width: 130px;
 }
-/* line 110, ../sass/AddContacts.scss */
+/* line 118, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .userInfo p {
   position: relative;
   font-size: 14px;
@@ -134,22 +143,25 @@
   height: 20px;
   width: 100px;
   padding-right: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-/* line 118, ../sass/AddContacts.scss */
+/* line 129, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .userInfo p i {
   display: inline-block;
   width: 11px;
   height: 11px;
 }
-/* line 123, ../sass/AddContacts.scss */
+/* line 134, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .userInfo p .w {
   background: url(../../images/w.png) no-repeat center;
 }
-/* line 126, ../sass/AddContacts.scss */
+/* line 137, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .userInfo p .m {
   background: url(../../images/m.png) no-repeat center;
 }
-/* line 130, ../sass/AddContacts.scss */
+/* line 141, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .userInfo span {
   display: inline-block;
   width: 58px;
@@ -161,18 +173,18 @@
   text-align: center;
   margin-top: 17px;
 }
-/* line 140, ../sass/AddContacts.scss */
+/* line 151, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .userInfo span img {
   margin-right: 3px;
 }
-/* line 144, ../sass/AddContacts.scss */
+/* line 155, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .userInfo .addProving {
   color: #b3b3b3;
   background-color: #f7f9fa;
   cursor: default;
   user-select: none;
 }
-/* line 150, ../sass/AddContacts.scss */
+/* line 161, ../sass/AddContacts.scss */
 .AddContacts .AddContactsBox .AddContactsSerchListBox ul li .userInfo .addFriends {
   color: gray;
   background-color: rgba(0, 170, 255, 0);

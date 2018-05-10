@@ -148,6 +148,7 @@
   	height:146px;
   	background:#fff;
   	.edMenu{
+      display:none;
   		width:100%;
   		height:18px;
   		padding-top:22px;
@@ -159,6 +160,7 @@
   			height:17px;
   			margin-left:20px;
   			cursor:pointer;
+        overflow:hidden;
   		}
   		.face{
   			height:18px;
@@ -185,7 +187,8 @@
   	.edCont{
       position:relative;
   		padding:0 15px;
-  		height:85px;
+  		// height:85px;
+      height:103px;
   		margin:10px 0;
   		overflow:hidden;
   		overflow-y:auto;

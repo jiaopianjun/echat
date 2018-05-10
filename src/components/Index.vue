@@ -5,16 +5,17 @@
         <img :src="data.info.avatar"/>
       </div>
       <ul class="menuList">
-        <li :class="['message',{'current':$store.state.menu.cause === true && $store.state.menu.other === false}]" @click="$store.commit('menustate',{type:true,flag:false,messageNum:$store.state.menu.messageNum})">
+        <li :class="['message',{'current':$store.state.menu.cause === true && $store.state.menu.other === false}]" @click="$store.commit('menustate',{type:true,flag:false,messageNum:$store.state.menu.messageNum,applyNum:$store.state.menu.applyNum})">
            <div class="icon"></div>
            <span class="messageNum" v-show="$store.state.menu.messageNum > 0">{{$store.state.menu.messageNum > 99 ? '99+' : $store.state.menu.messageNum}}</span>
         </li>
-        <li :class="['friends',{'current':$store.state.menu.cause === false && $store.state.menu.other === false}]" @click="$store.commit('menustate',{type:false,flag:false,messageNum:$store.state.menu.messageNum})">
+        <li :class="['friends',{'current':$store.state.menu.cause === false && $store.state.menu.other === false}]" @click="$store.commit('menustate',{type:false,flag:false,messageNum:$store.state.menu.messageNum,applyNum:$store.state.menu.applyNum})">
            <div class="icon"></div>
+           <span class="messageNum" v-show="$store.state.menu.applyNum > 0">{{$store.state.menu.applyNum > 99 ? '99+' : $store.state.menu.applyNum}}</span>
         </li>
       </ul>
       <ul class="otherList">
-         <li class="addFriends" @click="$store.commit('menustate',{type:false,flag:true,messageNum:$store.state.menu.messageNum})">
+         <li class="addFriends" @click="$store.commit('menustate',{type:false,flag:true,messageNum:$store.state.menu.messageNum,applyNum:$store.state.menu.applyNum})">
              <div class="icon"></div>
          </li>
       </ul>

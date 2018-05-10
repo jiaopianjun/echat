@@ -109,7 +109,23 @@
   height: 21px;
   background: url(../../images/friends.png) no-repeat center top;
 }
-/* line 98, ../sass/Index.scss */
+/* line 94, ../sass/Index.scss */
+.Menu .menuList li.friends span {
+  position: absolute;
+  left: 34px;
+  top: 7px;
+  display: inline-block;
+  padding: 0 7px;
+  height: 20px;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 11px;
+  font-family: "Arial";
+  color: white;
+  background-color: #f74c31;
+}
+/* line 112, ../sass/Index.scss */
 .Menu .otherList {
   position: absolute;
   left: 0;
@@ -117,18 +133,18 @@
   width: 69px;
   min-height: 16px;
 }
-/* line 104, ../sass/Index.scss */
+/* line 118, ../sass/Index.scss */
 .Menu .otherList .addFriends {
   width: 69px;
   height: 16px;
   text-align: center;
   cursor: pointer;
 }
-/* line 110, ../sass/Index.scss */
+/* line 124, ../sass/Index.scss */
 .Menu .otherList .addFriends:hover div {
   background-position: 0 -17px;
 }
-/* line 114, ../sass/Index.scss */
+/* line 128, ../sass/Index.scss */
 .Menu .otherList .addFriends div {
   display: inline-block;
   width: 16px;

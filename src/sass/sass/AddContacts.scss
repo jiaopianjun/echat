@@ -15,6 +15,7 @@
 		border-bottom:1px solid #e1e2e6;
   	}
   	.AddContactsSerchBox{
+      position:relative;
   		margin:52px auto 60px;
   		width:418px;
   		height:38px;
@@ -45,6 +46,13 @@
 				cursor:pointer;
             }
   		}
+      p{
+        position:absolute;
+        top:50px;
+        font-size:13px;
+        font-family: "Microsoft YaHei";
+        color: red;
+      }
   	}
   	.AddContactsSerchListBox{
   		padding:0 20px;
@@ -115,6 +123,9 @@
   						height:20px;
   						width:100px;
   						padding-right:30px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
               i{
                 display:inline-block;
                 width:11px;

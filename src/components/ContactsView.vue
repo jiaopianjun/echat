@@ -56,12 +56,16 @@ export default {
     button:function(type,userAid,userId){
       // 发送消息
       if(type === false){
-        this.$store.commit('menustate',{type:true,flag:false,data:this.currentData})
+        this.$store.commit('menustate',{type:true,flag:false,data:this.currentData,messageNum:this.$store.state.menu.messageNum,applyNum:this.$store.state.menu.applyNum})
       }else{
         // 同意申请
         this.$post(this.data.agreeUrl,{id:userId}).then((response) => {
           if(response.code === 200){
              this.$store.commit('applystate',{type:'adopt',data:this.currentData})
+             this.$store.commit('menustate',{messageNum:this.$store.state.menu.messageNum,applyNum:parseInt(this.$store.state.menu.applyNum) - parseInt(1)}) //  通过申请后 好友申请数量-1
+          }else if(response.code === 403){
+          var data = {"message":response.message}
+          this.$store.commit('rulestate',{type:'other',status:true,data:data})
           }
         })
       }
@@ -71,6 +75,10 @@ export default {
       this.$post(this.data.refuseUrl,{id:userId}).then((response) => {
         if(response.code === 200){
           this.$store.commit('applystate',{type:'refuse',data:this.currentData})
+          this.$store.commit('menustate',{messageNum:this.$store.state.menu.messageNum,applyNum:parseInt(this.$store.state.menu.applyNum) - parseInt(1)}) // 通过申请后 好友申请数量-1
+        }else if(response.code === 403){
+          var data = {"message":response.message}
+          this.$store.commit('rulestate',{type:'other',status:true,data:data})
         }
       })
     },

@@ -8,13 +8,14 @@ import rulepop from './rulepop.js'
 import contacts from './contacts.js'
 import peinfo from './peinfo.js'
 import recordlist from './recordlist.js'
-import chatrecord from './chatrecord.js'
+import realchat from './realchat.js'
 export default new vuex.Store({
     modules:{
     	menu:menustore,
     	rule:rulepop,
     	contacts:contacts,
     	peinfo:peinfo,
-    	record:recordlist
+    	record:recordlist,
+    	realchat:realchat
     }
 })
