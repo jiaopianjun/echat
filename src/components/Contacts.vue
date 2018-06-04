@@ -35,8 +35,8 @@
            </div>
            <div class="myFriendsList overflow">
               <div class="ulwrapper">
-                <ul>
-                   <li v-for="(list,index) in data[0].friendsList" :key="index" :useraid="list.aid" :class="['',{'offline':list.is_online == 0}]" @contextmenu="showMenu(index)" :state="list.is_online" @click="mFadd(list.aid,list.id,false)">
+                <ul id="ulwrapper">
+                   <li v-for="(list,index) in data[0].friendsList" :key="index" :useraid="list.aid" :class="['',{'offline':list.is_online == 0}]" @contextmenu="showMenu(index)" :state="list.is_online" @click="mFadd(list.aid,list.id,false)" :userid="list.id">
                       <vue-context-menu :contextMenuData="contextMenuData" :transferIndex="transferIndex" @savedata="savedata(list.aid,list.id,false)" @newdata="newdata(list)"></vue-context-menu>
                       <div class="userHd">
                         <div class="userHdImg"><img :src="list.avatar"/></div>
@@ -142,12 +142,14 @@ export default {
           friendsList = $.extend(true, [], this.data[0].friendsList),
           storeData = [],
           storeData2 = [];
+          console.log(onlineData,'onlineData')
       if(onlineData){
         for(var i in friendsList){
           if(parseInt(friendsList[i].aid) === parseInt(onlineData.aid)){
             friendsList[i].is_online = parseInt(1)
             storeData = friendsList[i]
-            this.data[0].onlineNum += 1
+            // this.data[0].onlineNum += 1
+            this.isOnlineNum();
           }else{
             storeData2.push(friendsList[i])
           }
@@ -161,12 +163,14 @@ export default {
           friendsList = $.extend(true, [], this.data[0].friendsList),
           storeData = [],
           storeData2 = [];
+          console.log(offlineData,'offlineData')
       if(offlineData){
         for(var i in friendsList){
           if(parseInt(friendsList[i].aid) === parseInt(offlineData.aid)){
             friendsList[i].is_online = parseInt(0)
             storeData = friendsList[i]
-            this.data[0].onlineNum -= 1
+            // this.data[0].onlineNum -= 1
+            this.isOnlineNum()
           }else{
             storeData2.push(friendsList[i])
           }
@@ -202,6 +206,15 @@ export default {
         storeData.push(addedData)
         storeData2.push(storeData[0])
         this.data[0].friendsList = $.extend(true, [], storeData2)
+        if(addedData.is_online === true){
+          var obj = {
+            type: "friend_online", // 好友上线
+            aid: addedData.aid,
+            nickname: addedData.nickname
+          };
+          obj = JSON.stringify(obj);
+          this.$store.commit('realchat',{data:obj})
+        }
       }
     },
     "$store.state.realchat.frienddeleted":function(){ // 监听好友被删除后 同步删除
@@ -212,8 +225,9 @@ export default {
       if(deletedData){
         for(var i in friendsList){
           if(parseInt(friendsList[i].aid) === parseInt(deletedData.aid)){
-            if(friendsList[i].is_online === parseInt(1)){
-              this.data[0].onlineNum -= 1
+            if(friendsList[i].is_online !== parseInt(0)){
+              // this.data[0].onlineNum -= 1
+              this.isOnlineNum()
             }
           }else{
             storeData2.push(friendsList[i])
@@ -224,6 +238,19 @@ export default {
     },
   },
   methods:{
+    isOnlineNum:function(){
+      var isonline = 0,
+          $list = $("#ulwrapper li"),
+          _this = this;
+      setTimeout(function(){
+        $("#ulwrapper li").each(function(){  
+          if(parseInt($(this).attr('state')) === 1){
+            isonline +=1
+          }  
+        })  
+        _this.data[0].onlineNum = isonline
+       },20)
+    },
     showMenu:function(index) {
       this.transferIndex = index
       event.preventDefault()
@@ -240,8 +267,7 @@ export default {
           var newData = response.result;
               newData.id = id
               newData.message_count = 0
-              newData.last_message = ''
-              newData.last_send_at = ''
+              newData.last_message = newData.last_send_at = ''
               newData.current = 'current'
           this.$store.commit('menustate',{type:true,flag:false,data:[newData],messageNum:this.$store.state.menu.messageNum,applyNum:this.$store.state.menu.applyNum})
         }
@@ -303,9 +329,10 @@ export default {
         }
       }
       // 加好友通过，如果在线则在好友列表最上面，如果离线则在列表最下面
-      if(publicData[0].is_online === 1){ 
+      if(publicData[0].is_online !== 0){ 
         storeData.unshift(publicData[0])
-        this.data[0].onlineNum += 1
+        // this.data[0].onlineNum += 1
+        this.isOnlineNum()
       }else{
         storeData.push(publicData[0])
       }
@@ -318,8 +345,9 @@ export default {
         if(friendsList[i].aid !== publicData.aid){
           storeData.push(friendsList[i])
         }else{
-          if(friendsList[i].is_online === 1){
-            this.data[0].onlineNum -= 1
+          if(friendsList[i].is_online !== 0){
+            // this.data[0].onlineNum -= 1
+            this.isOnlineNum()
           }
         }
         
@@ -329,36 +357,80 @@ export default {
   },
   mounted(){
    // 好友列表
-   this.$fetch(this.data[0].friendsUrl).then((response) => {
-      if(response.code == 200){
-        for(var i in response.friend_list){
-          if(response.friend_list[i].is_online === 1){
+    var vm = this
+    vm.$http({
+      url: this.data[0].friendsUrl,
+      method: 'jsonp',
+      params: {},
+      jsonp: 'callback',
+      emulateJSON: true,
+      headers: {
+        'Content-Type': 'x-www-from-urlencoded'
+      }
+    }).then(function (res) {
+      if(res.body.code === 200){
+        for(var i in res.body.friend_list){
+          if(res.body.friend_list[i].is_online !== 0){
             this.data[0].onlineNum += 1
           }
         }
-        this.data[0].friendsList = response.friend_list
+        this.data[0].friendsList = res.body.friend_list
       }
     })
+
+
+   // this.$fetch(this.data[0].friendsUrl).then((response) => {
+   //    if(response.code == 200){
+   //      for(var i in response.friend_list){
+   //        if(response.friend_list[i].is_online === 1){
+   //          this.data[0].onlineNum += 1
+   //        }
+   //      }
+   //      this.data[0].friendsList = response.friend_list
+   //    }
+   //  })
+
     // 好友申请列表
-    this.$fetch(this.data[1].ApplyUrl).then((response) => {
-      if(response.code == 200){
-        this.data[1].ApplyList = response.apply_list
-        this.data[1].ApplyNum = response.apply_list.length
-        if(response.apply_list){
-          this.$store.commit('menustate',{messageNum:this.$store.state.menu.messageNum,applyNum:response.apply_list.length})
+    var vm = this
+    vm.$http({
+      url: this.data[1].ApplyUrl,
+      method: 'jsonp',
+      params: {},
+      jsonp: 'callback',
+      emulateJSON: true,
+      headers: {
+        'Content-Type': 'x-www-from-urlencoded'
+      }
+    }).then(function (res) {
+      if(res.body.code === 200){
+        this.data[1].ApplyList = res.body.apply_list
+        this.data[1].ApplyNum = res.body.apply_list.length
+        if(res.body.apply_list){
+          this.$store.commit('menustate',{messageNum:this.$store.state.menu.messageNum,applyNum:res.body.apply_list.length})
         }
-        
       }
     })
+
+    // this.$fetch(this.data[1].ApplyUrl).then((response) => {
+    //   if(response.code == 200){
+    //     this.data[1].ApplyList = response.apply_list
+    //     this.data[1].ApplyNum = response.apply_list.length
+    //     if(response.apply_list){
+    //       this.$store.commit('menustate',{messageNum:this.$store.state.menu.messageNum,applyNum:response.apply_list.length})
+    //     }
+        
+    //   }
+    // })
   },
   created: function () {
     this.clickList()
-    $(window).resize(function(){
-      $(".myFriendsList").height($(window).height()-252)
-    })
-    $(function(){
-      $(".myFriendsList").height($(window).height()-252)
-    })
+    this.$hybrid.savedata = this.savedata
+    // $(window).resize(function(){
+    //   $(".myFriendsList").height($(window).height()-252)
+    // })
+    // $(function(){
+    //   $(".myFriendsList").height($(window).height()-252)
+    // })
   }
 }
 </script>

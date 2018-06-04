@@ -160,3 +160,10 @@ li {
 body {
   background: #f5f6f7;
 }
+
+/* line 112, ../sass/Reset.scss */
+.app {
+  width: 940px;
+  height: 640px;
+  margin: 0 auto;
+}

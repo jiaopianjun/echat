@@ -54,6 +54,7 @@ export default {
   methods: {
     enter:function(e){
       this.serchBtn()
+      this.status = false
     },
     delStatus:function(){
       this.status = false
@@ -94,12 +95,12 @@ export default {
   mounted(){
   },
   created: function () {
-    $(window).resize(function(){
-      $('.AddContactsSerchListBox ul').height($(window).height()-256)
-    })
-    $(function(){
-      $('.AddContactsSerchListBox ul').height($(window).height()-256)
-    })
+    // $(window).resize(function(){
+    //   $('.AddContactsSerchListBox ul').height($(window).height()-256)
+    // })
+    // $(function(){
+    //   $('.AddContactsSerchListBox ul').height($(window).height()-256)
+    // })
   }
 }
 </script>

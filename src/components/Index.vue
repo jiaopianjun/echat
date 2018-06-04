@@ -56,30 +56,46 @@ export default {
   methods: {
   },
   mounted(){
-    this.$fetch(this.data.peInfoUrl).then((response) => {
-      if(response.code === 200){
-        this.data.info = response
-        this.$store.commit('perinfo',{data:response})
+    // this.$fetch(this.data.peInfoUrl).then((response) => {
+    //   if(response.code === 200){
+    //     this.data.info = response
+    //     this.$store.commit('perinfo',{data:response})
+    //   }
+    // }) 
+    var vm = this
+    vm.$http({
+      url: this.data.peInfoUrl,
+      method: 'jsonp',
+      params: {},
+      jsonp: 'callback',
+      emulateJSON: true,
+      headers: {
+        'Content-Type': 'x-www-from-urlencoded'
+      }
+    }).then(function (res) {
+      if(res.body.code === 200){
+        this.data.info = res.body
+        this.$store.commit('perinfo',{data:res.body})
       }
     })
   },
   created: function () {
-    $(window).resize(function(){
-      $('.Content').width($(window).width()-54)
-      $('.Menu').height($(window).height()-2)
-      $('.ChatList').height($(window).height()-72)
-      $(".myFriendsList").height($(window).height()-252)
-      $('.ContactsView').width($(window).width()-332).height($(window).height()-2)
-      $('.ContactsViewWarp,.ContactsViewCont,.ChatViewContWarp').height($(window).height()-237)
-    })
-    $(function(){
-      $('.Content').width($(window).width()-54)
-      $('.ChatList').height($(window).height()-72)
-      $('.Menu').height($(window).height()-2)
-      $(".myFriendsList").height($(window).height()-252)
-      $('.ContactsView').width($(window).width()-332).height($(window).height()-2)
-      $('.ContactsViewWarp,.ContactsViewCont,.ChatViewContWarp').height($(window).height()-237)
-    })
+    // $(window).resize(function(){
+    //   // $('.Content').width($(window).width()-54)
+    //   $('.Menu').height($(window).height()-2)
+    //   $('.ChatList').height($(window).height()-72)
+    //   $(".myFriendsList").height($(window).height()-252)
+    //   $('.ContactsView').width($(window).width()-332).height($(window).height()-2)
+    //   $('.ContactsViewWarp,.ContactsViewCont,.ChatViewContWarp').height($(window).height()-237)
+    // })
+    // $(function(){
+    //   // $('.Content').width($(window).width()-54)
+    //   $('.ChatList').height($(window).height()-72)
+    //   $('.Menu').height($(window).height()-2)
+    //   $(".myFriendsList").height($(window).height()-252)
+    //   $('.ContactsView').width($(window).width()-332).height($(window).height()-2)
+    //   $('.ContactsViewWarp,.ContactsViewCont,.ChatViewContWarp').height($(window).height()-237)
+    // })
   }
 }
 </script>

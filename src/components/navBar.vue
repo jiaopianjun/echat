@@ -1,8 +1,8 @@
 <template>
   <div class="navBar" id="navBar">
-     <span class="navBarClose"></span>
-     <span class="Maximization"></span>
-     <span class="minimize"></span>
+     <span class="navBarClose" @click="closewindow"></span>
+     <!-- <span class="Maximization"></span>
+     <span class="minimize"></span> -->
   </div>
 </template>
 <script>
@@ -14,6 +14,9 @@ export default {
     }
   },
   methods: {
+    closewindow:function(){
+      stone.closeWindow()
+    }
   },
   mounted(){
   },

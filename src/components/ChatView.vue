@@ -180,6 +180,7 @@ export default {
     },
     removeSendTs:function(){
       this.tshow = false
+      console.log(this.chatData,'sdg')
     },
     sendMessage:function(aid,content){
       var on = { 
@@ -210,14 +211,14 @@ export default {
     })
   },
   created: function () {
-    $(window).resize(function(){
-      $('.ChatView').height($(window).height()-2).width($(window).width()-332)
-      $('.ChatViewContWarp').height($(window).height()-237)
-    })
-    $(function(){
-      $('.ChatView').height($(window).height()-2).width($(window).width()-332)
-      $('.ChatViewContWarp').height($(window).height()-237)
-    })
+    // $(window).resize(function(){
+    //   $('.ChatView').height($(window).height()-2).width($(window).width()-332)
+    //   $('.ChatViewContWarp').height($(window).height()-237)
+    // })
+    // $(function(){
+    //   $('.ChatView').height($(window).height()-2).width($(window).width()-332)
+    //   $('.ChatViewContWarp').height($(window).height()-237)
+    // })
   }
 }
 </script>

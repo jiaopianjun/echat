@@ -91,7 +91,7 @@ export default {
           chatList = $.extend(true, [], this.data.offlinelist);
       if(onlineData){
         for(var i in chatList){
-          if(this.data.offlinelist[i].aid === onlineData.aid){
+          if(parseInt(this.data.offlinelist[i].aid) === parseInt(onlineData.aid)){
             this.data.offlinelist[i].is_online = parseInt(1)
           }
         }
@@ -102,7 +102,7 @@ export default {
           chatList = $.extend(true, [], this.data.offlinelist);
       if(offlineData){
         for(var i in chatList){
-          if(this.data.offlinelist[i].aid === offlineData.aid){
+          if(parseInt(this.data.offlinelist[i].aid) === parseInt(offlineData.aid)){
             this.data.offlinelist[i].is_online = parseInt(0)
           }
         }
@@ -213,7 +213,7 @@ export default {
           }
           tempData2 = $.extend(true, [], data.messages)
           tempData.push(tempData2[0]) 
-          if(this.isAid == data.aid){
+          if(this.isAid == data.aid && this.$store.state.menu.cause === true && this.$store.state.menu.other === false){
             // 同时清除未读消息
             this.chatData = data
             this.claerMessageNum(data.session_id,data.message_count,data.aid,0) 
@@ -332,34 +332,60 @@ export default {
   },
   mounted(){
     //离线消息   获取到时  同时存储到本地
-    this.$fetch(this.data.offlineUrl).then((response) => {
-      if(response.code === 200){
+    var vm = this
+    vm.$http({
+      url: this.data.offlineUrl,
+      method: 'jsonp',
+      params: {},
+      jsonp: 'callback',
+      emulateJSON: true,
+      headers: {
+        'Content-Type': 'x-www-from-urlencoded'
+      }
+    }).then(function (res) {
+      if(res.body.code === 200){
         var DeTemp = {"session_id":"",messages:[]};
-        for(var i in response.list){
-          this.data.offlinelist.push(response.list[i])
-          var list = response.list[i]
+        for(var i in res.body.list){
+          this.data.offlinelist.push(res.body.list[i])
+          var list = res.body.list[i]
           DeTemp.session_id = list.session_id
           DeTemp.messages = list.messages
           this.$store.commit('chatrecordstate',{data:DeTemp})
         }
-        this.data.offineContNum = response.sum_count
-        this.$store.commit('menustate',{messageNum:response.sum_count,applyNum:this.$store.state.menu.applyNum})
+        this.data.offineContNum = res.body.sum_count
+        this.$store.commit('menustate',{messageNum:res.body.sum_count,applyNum:this.$store.state.menu.applyNum})
       }
     })
+
+
+    // this.$fetch(this.data.offlineUrl).then((response) => {
+    //   if(response.code === 200){
+    //     var DeTemp = {"session_id":"",messages:[]};
+    //     for(var i in response.list){
+    //       this.data.offlinelist.push(response.list[i])
+    //       var list = response.list[i]
+    //       DeTemp.session_id = list.session_id
+    //       DeTemp.messages = list.messages
+    //       this.$store.commit('chatrecordstate',{data:DeTemp})
+    //     }
+    //     this.data.offineContNum = response.sum_count
+    //     this.$store.commit('menustate',{messageNum:response.sum_count,applyNum:this.$store.state.menu.applyNum})
+    //   }
+    // })
     //当前时间
-    this.$fetch(this.data.getTimeUrl).then((response) => {
+    this.$fetch(this.getTimeUrl).then((response) => {
       if(response.code === 200){
         this.oldDate = this.time(response.timestamp,'qt')
       }
     })
   },
   created: function () {
-    $(window).resize(function(){
-      $('.Chat').height($(window).height()-2)
-    })
-    $(function(){
-      $('.Chat').height($(window).height()-2)
-    })
+    // $(window).resize(function(){
+    //   $('.Chat').height($(window).height()-2)
+    // })
+    // $(function(){
+    //   $('.Chat').height($(window).height()-2)
+    // })
   }
 }
 </script>

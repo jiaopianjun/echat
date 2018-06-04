@@ -3,8 +3,10 @@
   top:0;
   left:0;
   padding-left:261px;
-  min-width:608px;
-  min-height:638px;
+  width:608px;
+  height:638px;
+  // min-width:608px;
+  // min-height:638px;
   .ChatViewContMenu{
   	width:100%;
   	height:29px;
@@ -27,8 +29,9 @@
   }
   .ChatViewContWarp{
   	width:100%;
-  	min-height:403px;
-  	height:100%;
+  	height:403px;
+    // min-height:403px;
+  	// height:100%;
   	padding:15px 0;
   	background:#f7f9fa;
   	.v_a{
@@ -72,13 +75,20 @@
   			position:relative;
   			min-height:45px;
   			.chatUserImg{
+          position:relative;
   				width:40px;
   				height:40px;
   				border-radius:50%;
   				overflow:hidden;
   				img{
-  					height:100%;
-  					height:100%;
+  					// max-height:100%;
+  					max-height:100%;
+            position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  -moz-transform: translate(-50%,-50%);transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
   				}
   			}
   			.chatText{
@@ -89,6 +99,7 @@
   				padding:12px 10px;
   				text-align:left;
   				font-family: "Microsoft YaHei";
+          word-wrap: break-word;
   				.img, &>.img img{
   					position:relative;
   					// left:50%;
@@ -112,12 +123,12 @@
   				&::before{
   					position:absolute;
   					content:'';
-					width: 0; 
-					height: 0; 
-					right:-5px;
-					top:0;
-					border-top: 10px solid #00aaff; 
-					border-right: 10px solid transparent; 
+  					width: 0; 
+  					height: 0; 
+  					right:-5px;
+  					top:0;
+  					border-top: 10px solid #00aaff; 
+  					border-right: 10px solid transparent; 
   				}
   			}
   		}
@@ -133,12 +144,12 @@
   				&::before{
   					position:absolute;
   					content:'';
-					width: 0; 
-					height: 0; 
-					left:-5px;
-					top:0;
-					border-top: 10px solid rgb(240, 242, 245);
-					border-left: 10px solid transparent; 
+  					width: 0; 
+  					height: 0; 
+  					left:-5px;
+  					top:0;
+  					border-top: 10px solid rgb(240, 242, 245);
+  					border-left: 10px solid transparent; 
   				}
   			}
   		}
@@ -148,10 +159,10 @@
   	height:146px;
   	background:#fff;
   	.edMenu{
-      display:none;
+      // display:none;
   		width:100%;
   		height:18px;
-  		padding-top:22px;
+  		// padding-top:22px;
   		.edMenuIcon{
   			position:relative;
   			float:left;

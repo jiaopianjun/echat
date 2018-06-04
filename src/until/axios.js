@@ -76,11 +76,13 @@ export function fetch(url,params={}){
    return new Promise((resolve,reject) => {
       axios.post(url,data,{
         withCredentials:true
-      }).then(response => {
-            resolve(response.data);
-          },err => {
-            reject(err)
-          })
+      })
+      .then(response => {
+        resolve(response.data);
+      })
+      .catch(err => {
+        reject(err)
+      })
    })
  }
 
@@ -111,11 +113,21 @@ export function patch(url,data = {}){
 
 export function put(url,data = {}){
   return new Promise((resolve,reject) => {
-    axios.put(url,data)
-         .then(response => {
-           resolve(response.data);
-         },err => {
-           reject(err)
-         })
+     axios.put(url,data)
+     .then(response => {
+       resolve(response.data);
+     },err => {
+       reject(err)
+     })
   })
 }
+
+window.addEventListener('unhandledrejection', event =>
+{
+console.log(event.reason); // 打印"Hello, Fundebug!"
+});
+ 
+window.addEventListener('rejectionhandled', event =>
+{
+console.log('rejection handled'); // 1秒后打印"rejection handled"
+});

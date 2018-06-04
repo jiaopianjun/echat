@@ -7,6 +7,8 @@ import $ from 'jquery'
 import axios from 'axios'
 import store from './store'
 import vuex from 'vuex'
+import { hybrid } from './until/inside'  
+Vue.prototype.$hybrid = hybrid 
 
 Vue.use(vuex);
 import {post,fetch,patch,put} from './until/axios'

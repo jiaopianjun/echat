@@ -31,29 +31,40 @@ export default {
       return unescape(arr[2]);
       else
       return null;
+    },
+    wsInit: function(){
+        var ws = new WebSocket("wss://stone.snail.com:4433/");
+        var _this = this;
+        ws.onopen = function (evt) {
+          ws.onmessage = function (evt) { 
+            var received_msg = evt.data;
+            _this.data = evt.data
+            console.log(_this.data, 'received')
+          };
+          var match = document.cookie.match(/(?:^| )token=([^;]+)/);
+          if (match) {
+              var token = decodeURIComponent(match[1]);
+              this.send('{"type":"auth", "token":"'+token+'"}');
+          }
+        };
+        ws.onclose = function() {
+          console.log('ws closed, try reconnect in 2s');
+          setTimeout(function(){_this.wsInit()}, 2000);
+        }
     }
   },
   mounted () {
     // this.socket()
-    var ws = new WebSocket("wss://stone.snail.com:4433/");
-    var _this = this,
-        token = _this.getCookie('token');
-      ws.onopen = function (evt) {
-        ws.onmessage = function (evt) { 
-          var received_msg = evt.data;
-          _this.data = evt.data
-          console.log(_this.data,'123')
-        };
-      ws.send('{"type":"auth", "token":"'+token+'"}');
-    };   
+    this.wsInit();
+  
   },
   created: function () {
-    $(window).resize(function(){
-      $('.app').height($(window).height()).width($('body').width()+17)
-    })
-    $(function(){
-      $('.app').height($(window).height()).width($('body').width()+17)
-    })
+    // $(window).resize(function(){
+    //   $('.app').height($(window).height()).width($('body').width()+17)
+    // })
+    // $(function(){
+    //   $('.app').height($(window).height()).width($('body').width()+17)
+    // })
   }
 }
 </script>
