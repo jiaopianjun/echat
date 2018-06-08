@@ -50,7 +50,8 @@ export default {
         getfriendInfo:"http://stoneapi.snail.com/v2/user/friend/friend-info",
       },
       LatelyGame:[],
-      userInfo_aid:''
+      userInfo_aid:'',
+      cData:[]
     }
   },
   methods: {
@@ -63,7 +64,7 @@ export default {
               newData.last_message = ''
               newData.last_send_at = ''
               newData.current = 'current'
-          this.currentData = [newData]
+          this.cData = [newData]
         }
       })
     },
@@ -76,7 +77,7 @@ export default {
         this.getUserInfo(userAid,'')
         this.$post(this.data.agreeUrl,{aid:userAid}).then((response) => {
           if(response.code === 200){
-             this.$store.commit('applystate',{type:'adopt',data:this.currentData})
+             this.$store.commit('applystate',{type:'adopt',data:this.cData})
              this.$store.commit('menustate',{messageNum:this.$store.state.menu.messageNum,applyNum:parseInt(this.$store.state.menu.applyNum) - parseInt(1)}) //  通过申请后 好友申请数量-1
           }else if(response.code === 403){
           var data = {"message":response.message}
@@ -90,7 +91,7 @@ export default {
       this.getUserInfo(userAid,'')
       this.$post(this.data.refuseUrl,{aid:userAid}).then((response) => {
         if(response.code === 200){
-          this.$store.commit('applystate',{type:'refuse',data:this.currentData})
+          this.$store.commit('applystate',{type:'refuse',data:this.cData})
           this.$store.commit('menustate',{messageNum:this.$store.state.menu.messageNum,applyNum:parseInt(this.$store.state.menu.applyNum) - parseInt(1)}) // 通过申请后 好友申请数量-1
         }else if(response.code === 403){
           var data = {"message":response.message}

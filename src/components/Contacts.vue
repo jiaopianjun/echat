@@ -107,6 +107,19 @@ export default {
     }
   },
   watch:{
+    data:{
+     handler:function(val,valold){
+       var list = val[0].friendsList,onlineNum = 0,_this = this;
+       for(var i in list){
+          if(parseInt(list[i].is_online) !== 0){
+            onlineNum += 1
+          }
+       }
+       _this.data[0].onlineNum = onlineNum
+       console.log(onlineNum,'zuixin')
+     },  
+      deep:true
+    },
     "$store.state.contacts.applyList":function(){ // 监听好友列表
       var publicData = $.extend(true, [], this.$store.state.contacts.applyList),
           applyList = $.extend(true, [], this.data[1].ApplyList),
@@ -120,7 +133,7 @@ export default {
           this.updateApplyList(publicData,applyList,ApplyData)
         }else if(type === 'adopt'){
           // 通过好友申请
-          this.updateFriendsList(publicData,friendsList,storeData)
+          // this.updateFriendsList(publicData,friendsList,storeData)
           this.updateApplyList(publicData,applyList,ApplyData)
         }
         this.isDefault = false
@@ -142,14 +155,13 @@ export default {
           friendsList = $.extend(true, [], this.data[0].friendsList),
           storeData = [],
           storeData2 = [];
-          console.log(onlineData,'onlineData')
       if(onlineData){
         for(var i in friendsList){
           if(parseInt(friendsList[i].aid) === parseInt(onlineData.aid)){
             friendsList[i].is_online = parseInt(1)
             storeData = friendsList[i]
             // this.data[0].onlineNum += 1
-            this.isOnlineNum();
+            // this.isOnlineNum();
           }else{
             storeData2.push(friendsList[i])
           }
@@ -163,14 +175,13 @@ export default {
           friendsList = $.extend(true, [], this.data[0].friendsList),
           storeData = [],
           storeData2 = [];
-          console.log(offlineData,'offlineData')
       if(offlineData){
         for(var i in friendsList){
           if(parseInt(friendsList[i].aid) === parseInt(offlineData.aid)){
             friendsList[i].is_online = parseInt(0)
             storeData = friendsList[i]
             // this.data[0].onlineNum -= 1
-            this.isOnlineNum()
+            // this.isOnlineNum()
           }else{
             storeData2.push(friendsList[i])
           }
@@ -227,7 +238,7 @@ export default {
           if(parseInt(friendsList[i].aid) === parseInt(deletedData.aid)){
             if(friendsList[i].is_online !== parseInt(0)){
               // this.data[0].onlineNum -= 1
-              this.isOnlineNum()
+              // this.isOnlineNum()
             }
           }else{
             storeData2.push(friendsList[i])
@@ -249,7 +260,7 @@ export default {
           }  
         })  
         _this.data[0].onlineNum = isonline
-       },20)
+       },200)
     },
     showMenu:function(index) {
       this.transferIndex = index
@@ -332,7 +343,7 @@ export default {
       if(publicData[0].is_online !== 0){ 
         storeData.unshift(publicData[0])
         // this.data[0].onlineNum += 1
-        this.isOnlineNum()
+        // this.isOnlineNum()
       }else{
         storeData.push(publicData[0])
       }
@@ -347,10 +358,9 @@ export default {
         }else{
           if(friendsList[i].is_online !== 0){
             // this.data[0].onlineNum -= 1
-            this.isOnlineNum()
+            // this.isOnlineNum()
           }
         }
-        
         this.data[0].friendsList = $.extend(true, [], storeData)
       }
     }
