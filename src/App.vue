@@ -55,10 +55,8 @@ export default {
 
 
       window.clearInterval(this.set);
-      var i = 0;
       function sendhert(){
         ws.send('{"type":"heart"}');
-        console.log('xt',i++)
       }
       this.set = setInterval(sendhert,1000 * 60 * 14);
     }
