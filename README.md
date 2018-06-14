@@ -1,43 +1,35 @@
-### 更新日志
-   05.16 所有联通完成，质检测试完成。 [线上地址](http://stone.snail.com/wnchat/#/)
+#### 前提
+ 一个基于平台内部的聊天项目，需要实现用户之间可以相互聊天发送消息，可以添加好友等功能。且消息必须是实时性的，并且用户下线后再次上线可以接受离线消息。
 
-### 更新日志
-   04.24 联调后端接口  完成好友列表，通过好友请求，拒绝好友请求。另外增加聊天记录本地存储。
+#### 技术栈
+Vue.js + Html5 + CSS3 + Sass + Vuex + Axios + Websocket 等
 
-### 项目背景
-  公司平台要做一个通讯系统，本来是java 来做的后面改前端+PHP来做，所以就用VUE来做这个了
-  
-### 技术栈
-   vue-axios
-   vuex
-   websocket
-   sass
-   css3
-   等...
-### 已经完成进度
-   
-* 整体结构已经完成
-* 好友列表完成
-* 好友添加拒绝完成
-* 好友列表发起聊天完成
-* 聊天页面点击聊天完成
-* 发送聊天完成
-* 点击聊天列表清除未读消息完成
-* 实时消息通知完成
-* 好友动态上下线完成
-* 实时加好友通知完成
-* 优化发送文字长度
-* 聊天记录本地储存 如果页面不刷新 则不会丢失
-* 与后端已经联通完成，一期已经上线
+#### 源码 
+[Github](https://github.com/jiaopianjun/echat)
 
-## Build Setup
+#### 项目实例
+因为项目接口为线上接口 本地运行会报错  你可以将本地loaclhost 地址 指向 stone.snail.com
+或者直接访问 [线上地址](http://stone.snail.com/wnchat/#/)  在 [另一个项目社区](http://stone.snail.com/social/index.html#/) 注册账号 返回后即可体验
 
-``` bash
-# install dependencies
-npm install
+#### 技术难点
+ - 实现从好友列表到聊天列表的发起
+ - 消息的存储
+ - 上下线状态的即时变动
+ - 收到消息即使提醒以及未读消息的数量
+ - 好友删除的通知 等等
 
-# serve with hot reload at localhost:8080
+#### 项目运行
+git clone https://github.com/jiaopianjun/echat.git
+npm install 
 npm run dev
 
-# build for production with minification
-npm run build
+#### 项目截图
+![1.png](https://upload-images.jianshu.io/upload_images/1251988-68766bfa9c448aca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![2.png](https://upload-images.jianshu.io/upload_images/1251988-5bc4ffc5d33ae93f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![3.png](https://upload-images.jianshu.io/upload_images/1251988-466075a6875ce2ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![4.png](https://upload-images.jianshu.io/upload_images/1251988-440cdd8004029070.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![6.png](https://upload-images.jianshu.io/upload_images/1251988-b470937363a3b3e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
