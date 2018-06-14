@@ -19,9 +19,9 @@ Vue.js + Html5 + CSS3 + Sass + Vuex + Axios + Websocket 等
  - 好友删除的通知 等等
 
 #### 项目运行
-git clone https://github.com/jiaopianjun/echat.git
-npm install 
-npm run dev
+ - git clone https://github.com/jiaopianjun/echat.git
+ - npm install 
+ - npm run dev
 
 #### 项目截图
 ![1.png](https://upload-images.jianshu.io/upload_images/1251988-68766bfa9c448aca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
