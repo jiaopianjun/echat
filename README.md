@@ -7,9 +7,6 @@ Vue.js + Html5 + CSS3 + Sass + Vuex + Axios + Websocket 等
 #### 源码 
 [Github](https://github.com/jiaopianjun/echat)
 
-#### 项目实例
-因为项目接口为线上接口 本地运行会报错  你可以将本地loaclhost 地址 指向 stone.snail.com
-或者直接访问 [线上地址](http://stone.snail.com/wnchat/#/)  在 [另一个项目社区](http://stone.snail.com/social/index.html#/) 注册账号 返回后即可体验
 
 #### 技术难点
  - 实现从好友列表到聊天列表的发起
